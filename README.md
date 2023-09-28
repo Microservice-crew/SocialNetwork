@@ -1,13 +1,4 @@
-# Nom du Projet Laravel
 
-Ce guide explique comment cloner et exécuter ce projet Laravel depuis GitHub sur votre machine locale.
-
-## Prérequis
-
-Assurez-vous d'avoir les outils suivants installés sur votre machine :
-- [Git](https://git-scm.com/)
-- [Composer](https://getcomposer.org/)
-- [PHP](https://www.php.net/) (avec une version compatible avec le projet Laravel)
 
 ## Étapes
 
@@ -19,8 +10,6 @@ Assurez-vous d'avoir les outils suivants installés sur votre machine :
      ```bash
      https://github.com/Microservice-crew/SocialNetwork.git
      ```
-
-   Remplacez `nom-utilisateur` par le nom d'utilisateur du propriétaire du projet GitHub et `nom-projet` par le nom du projet.
 
 2. **Accédez au Répertoire Cloné** :
    - Naviguez vers le répertoire cloné en utilisant `cd`. Par exemple :
