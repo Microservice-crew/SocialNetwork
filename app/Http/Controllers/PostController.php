@@ -24,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //hello world
+        //it is now working
         $posts = Post::all(); // Retrieve all post
         return view('home', compact('posts'));
         //return view("/");
