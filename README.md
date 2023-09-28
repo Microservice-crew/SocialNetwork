@@ -26,7 +26,7 @@
      ```
 
 4. **Copiez le Fichier .env.exemple** :
-   - Copiez le fichier `.env.example` et le coller dans un nouveau fichier nommée .env
+   - Copiez le fichier `.env.example` et le coller dans un nouveau fichier nommé `.env`
 
 5. **Générez la Clé d'Application** :
    - Générez une nouvelle clé d'application Laravel avec la commande :
