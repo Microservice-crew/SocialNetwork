@@ -24,6 +24,11 @@
                 </div>
             @endforeach
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="{{ route('events.create') }}" class="btn btn-success">Create Event</a>
+            </div>
+        </div>
     </div>
 
 @endsection

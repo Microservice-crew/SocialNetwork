@@ -23,6 +23,8 @@ use App\Http\Controllers\PostController;
 
 // La route-ressource => Les routes "post.*"
 Route::resource("posts", PostController::class);
+// route for event controller
+Route::resource("events", EventController::class);
 
 
 
@@ -37,7 +39,7 @@ Route::get('/', 'App\Http\Controllers\PostController@index')->middleware('auth')
 
 
 Route::put('/', 'App\Http\Controllers\PostController@update')->name('home');
-     
+
 
 
 
@@ -64,8 +66,8 @@ Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->middleware(
 
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-
-
+Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
+Route::post('/events', 'App\Http\Controllers\EventController@store')->middleware('auth')->name('storeEvent');
 Route::get('/chat', function () {
     return view('chat');
 });
@@ -105,6 +107,7 @@ Route::get('/notification', function () {
     return view('notification');
 });
 
+Route::get('/Event', 'App\Http\Controllers\EventController@index')->name('events');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
