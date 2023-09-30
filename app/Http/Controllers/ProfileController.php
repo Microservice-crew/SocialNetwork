@@ -16,9 +16,9 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('editprofil', [ 
             'user' => $request->user(),
-        ]);
+        ]); 
     }
 
     /**
@@ -33,28 +33,18 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
+        
+    
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return redirect('editprofil')->with('success', 'profile-updated .');
+
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy()
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current-password'],
-        ]);
-
-        $user = $request->user();
-
-        Auth::logout();
-
+        $user = auth()->user();
         $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+    
+        return redirect('/')->with('success', 'Your account has been deleted.');
     }
 }
