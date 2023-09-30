@@ -190,9 +190,17 @@
                         <li>
                            <a href=" {{ asset ('profil') }} " class="  d-flex align-items-center">
                               <img src="{{ asset ('images/user/1.jpg') }}" class="img-fluid rounded-circle mr-3" alt="user">
+                              @auth
                               <div class="caption">
-                                 <h6 class="mb-0 line-height">zied </h6>
+                                 <h6 class="mb-0 line-height" style="font-size:16px">
+                                    
+                              
+    {{ Auth::user()->name }}
+                             
+                              
+                              </h6>
                               </div>
+                              @endauth
                            </a>
                         </li>
                         <li>

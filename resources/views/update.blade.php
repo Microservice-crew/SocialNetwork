@@ -1,11 +1,63 @@
-<!-- resources/views/posts/edit.blade.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Post</title>
-</head>
-<body>
-    <h1>Edit Post</h1>
+
+
+
+
+
+
+@extends('layouts.base')
+
+
+@section('content')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+               <div class="row">
+
+                  <div class="col-lg-12">
+                     <div class="iq-edit-list-data">
+                        <div class="tab-content">
+                           <div class="tab-pane fade active show" id="personal-information" role="tabpanel">
+                              <div class="iq-card">
+                                 <div class="iq-card-header d-flex justify-content-between">
+                                    <div class="iq-header-title">
+                                       <h4 class="card-title">Edite posts </h4>
+                                    </div>
+                                 </div>
+                                 <div class="iq-card-body">
+
+
+
+
+
+
+
     <form method="POST" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT') <!-- Use PUT method for updating -->
@@ -20,3 +72,8 @@
     </form>
 </body>
 </html>
+
+
+
+
+@endsection
