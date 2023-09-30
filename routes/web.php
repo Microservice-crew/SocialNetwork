@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-
 use App\Http\Controllers\PostController;
+
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReclamationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,19 @@ use App\Http\Controllers\PostController;
 */
 
 
+Route::get('/reclamations', 'App\Http\Controllers\ReclamationController@index')->name('reclamations.index');
+Route::get('/reclamations/create', 'App\Http\Controllers\ReclamationController@create')->name('reclamations.create');
+Route::post('/reclamations', 'App\Http\Controllers\ReclamationController@store')->name('reclamations.store');
+Route::get('/reclamations/{id}', 'App\Http\Controllers\ReclamationController@show')->name('reclamations.show');
+Route::get('/reclamations/{id}/edit', 'App\Http\Controllers\ReclamationController@edit')->name('reclamations.edit');
+Route::put('/reclamations/{id}', 'App\Http\Controllers\ReclamationController@update')->name('reclamations.update');
+Route::delete('/reclamations/{id}', 'App\Http\Controllers\ReclamationController@destroy')->name('reclamations.destroy');
 
 
-// La route-ressource => Les routes "post.*"
+
+
+
+
 Route::resource("posts", PostController::class);
 
 
@@ -30,13 +41,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/{post}/update', 'App\Http\Controllers\PostController@editt')->name('home');
+Route::get('/{post}/update', 'App\Http\Controllers\PostController@editt');
 
 
-Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->name('home');
+Route::get('/', 'App\Http\Controllers\PostController@showziedPage');
 
 
-Route::delete('/{post}', 'App\Http\Controllers\PostController@destroy')->name('home');
+Route::delete('/{post}', 'App\Http\Controllers\PostController@destroy');
 
 
 Route::get('/chat', function () {
