@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\auth\RegisteredUserController;
 
-
+use App\Http\Controllers\EventController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReclamationController;
@@ -36,6 +37,8 @@ Route::get('/reclamations/{reclamation}/edit',  [App\Http\Controllers\Reclamatio
 
 
 Route::resource("posts", PostController::class);
+// route for event controller
+Route::resource("events", App\Http\Controllers\EventController::class);
 
 
 
@@ -50,7 +53,7 @@ Route::get('/', 'App\Http\Controllers\PostController@index')->middleware('auth')
 
 
 Route::put('/', 'App\Http\Controllers\PostController@update')->name('home');
-     
+
 
 
 
@@ -77,6 +80,17 @@ Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->middleware(
 
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+//Events
+Route::get('/Event', 'App\Http\Controllers\EventController@index')->name('events');
+
+Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
+Route::post('/Event/create', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
+//edit
+Route::get('/events/{event}/edit',  [App\Http\Controllers\EventController::class, 'edit'])->name('events.edit');
+//put methode
+Route::put('/events/{event}', 'EventController@update')->name('events.update');
+
+Route::delete('/events/{event}', 'App\Http\Controllers\EventController@deleteEvent')->middleware('auth')->name('deleteEvent');
 
 
 
