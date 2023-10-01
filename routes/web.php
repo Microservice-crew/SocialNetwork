@@ -85,9 +85,10 @@ Route::get('/Event', 'App\Http\Controllers\EventController@index')->name('events
 Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
 Route::post('/Event/create', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
 //edit
-Route::get('/events/{event}/edit', 'App\Http\Controllers\EventController@edit')->name('events.edit');
-
+Route::get('/events/{event}/edit',  [App\Http\Controllers\EventController::class, 'edit'])->name('events.edit');
 //put methode
+Route::put('/events/{event}', 'EventController@update')->name('events.update');
+
 Route::delete('/events/{event}', 'App\Http\Controllers\EventController@deleteEvent')->middleware('auth')->name('deleteEvent');
 
 

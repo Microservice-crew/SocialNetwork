@@ -52,17 +52,15 @@ class EventController extends Controller
 
     public function update(Request $request, $id)
     {
+        //update event
         $event = Event::findOrFail($id);
-
         $data = $request->validate([
             'name' => 'required|string',
             'date' => 'required|date',
             'location' => 'required|string',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Allow empty image field
-            'published_by' => 'required|exists:users,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        // Handle file upload if an image is provided
+        // Handle file upload
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -72,7 +70,7 @@ class EventController extends Controller
 
         $event->update($data);
 
-        return redirect()->route('Events.events')
+        return redirect()->route('events.index')
             ->with('success', 'Event updated successfully');
     }
 
