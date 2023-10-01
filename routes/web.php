@@ -18,7 +18,7 @@ use App\Http\Controllers\PostController;
 */
 
 
-
+//hh
 
 // La route-ressource => Les routes "post.*"
 Route::resource("posts", PostController::class);
