@@ -59,6 +59,13 @@ class PostController extends Controller
 
     
 
+
+
+
+
+
+
+
     public function store(Request $request) {
         // 1. La validation
         $this->validate($request, [
@@ -77,12 +84,12 @@ class PostController extends Controller
              $image->move($destinationpath , $newname);
 
 
-        // 3. On enregistre les informations du Post
-        Post::create([
-            "content" => $request->content,
-            "picture" => $newname,
-        ]); 
-    
+         $user = Auth::user();
+
+             $user->posts()->create([
+                 "content" => $request->content,
+                 "picture" => $newname,
+             ]);
 
 
 
@@ -90,6 +97,11 @@ class PostController extends Controller
      
         return redirect('/');
     }
+
+
+
+    
+
     /**
      * Display the specified resource.
      *
