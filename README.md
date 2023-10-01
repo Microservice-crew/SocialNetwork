@@ -25,8 +25,12 @@
      composer install
      ```
 
-4. **Copiez le Fichier .env.exemple** :
-   - Copiez le fichier `.env.example` et le coller dans un nouveau fichier nommé `.env`
+4. **Copiez le Fichier .env** :
+   - Copiez le fichier `.env.example` en utilisant la commande suivante :
+
+     ```bash
+     cp .env.example .env
+     ```
 
 5. **Générez la Clé d'Application** :
    - Générez une nouvelle clé d'application Laravel avec la commande :
