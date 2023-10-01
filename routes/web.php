@@ -24,6 +24,8 @@ Route::resource('reclamations',App\Http\Controllers\ReclamationController::class
 Route::get('/reclamations', [App\Http\Controllers\ReclamationController::class, 'index'])->name('reclamation.index');
 Route::get('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'create'])->name('reclamations.create');
 Route::post('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'store']);
+Route::get('/reclamations/{reclamation}/edit',  [App\Http\Controllers\ReclamationController::class, 'edit'])->name('reclamations.edit');
+
 
 
 

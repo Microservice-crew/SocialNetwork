@@ -42,13 +42,15 @@ class ReclamationController extends Controller
     return redirect()->route('reclamation.index')->with('success', 'Réclamation soumise avec succès !');
 }
 
-    public function edit($id)
-    {
-        $reclamation = Reclamation::findOrFail($id);
-        $reclamationTypes = Reclamation::getReclamationTypeOptions();
+public function edit($id)
+{
 
-        return view('reclamation.edit', compact('reclamation', 'reclamationTypes'));
-    }
+    $reclamation = Reclamation::findOrFail($id);
+
+    $reclamationTypes = Reclamation::getReclamationTypeOptions();
+
+    return view('reclamation.edit', compact('reclamation', 'reclamationTypes'));
+}
 
     public function update(Request $request, $id)
     {
