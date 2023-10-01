@@ -1,11 +1,16 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\auth\RegisteredUserController;
-use App\Http\Controllers\PostController;
+
+
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReclamationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +25,15 @@ use App\Http\Controllers\PostController;
 
 
 
+Route::resource('reclamations',App\Http\Controllers\ReclamationController::class);
+Route::get('/reclamations', [App\Http\Controllers\ReclamationController::class, 'index'])->name('reclamation.index');
+Route::get('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'create'])->name('reclamations.create');
+Route::post('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'store']);
+Route::get('/reclamations/{reclamation}/edit',  [App\Http\Controllers\ReclamationController::class, 'edit'])->name('reclamations.edit');
 
-// La route-ressource => Les routes "post.*"
+
+
+
 Route::resource("posts", PostController::class);
 
 
@@ -64,6 +76,7 @@ Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->middleware(
 
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+
 
 
 Route::get('/chat', function () {
