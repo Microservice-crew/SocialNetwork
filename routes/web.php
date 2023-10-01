@@ -51,10 +51,6 @@ Route::get('/', 'App\Http\Controllers\PostController@index')->middleware('auth')
 Route::put('/', 'App\Http\Controllers\PostController@update')->name('home');
      
 
-
-
-
-
 Route::get('/{post}/edit', 'App\Http\Controllers\PostController@edit')->name('update');
 
 
