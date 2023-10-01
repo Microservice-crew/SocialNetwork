@@ -114,8 +114,28 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                      @foreach ($posts as $post)
   
+           
+   
+  
+
 
 
 
@@ -156,7 +176,7 @@
                                                 <a class="dropdown-item p-3" href="#">
                                                    <div class="d-flex align-items-top">
                                                       <div class="icon font-size-20"><i class="ri-pencil-line"></i></div>
-                                                      <div class="data ml-2">
+                                                      <div class="data ml-2" style=" margin-top:-15%;">
                                                       <a href="{{ route('update', $post->id) }}" class="btn btn-primary">Edit</a>
                                                       </div>
                                                    </div>
@@ -164,7 +184,7 @@
 
 
                                                 
-    <p>Posted by: </p>
+  
 </div>  
  
 </div>

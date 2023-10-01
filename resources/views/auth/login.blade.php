@@ -40,7 +40,7 @@
                 <i class="fas fa-envelope"></i> 
                 
                 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Enter your Email" />
    
               </div>
 
@@ -55,7 +55,7 @@
                 <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="current-password" />
+                            required autocomplete="current-password" placeholder="Enter your Password" />
             </div>
 
 
