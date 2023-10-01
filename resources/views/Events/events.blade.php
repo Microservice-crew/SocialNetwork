@@ -31,7 +31,8 @@
                                 </form>
                             @endif
                             @if(auth()->user()->id === $event->published_by)
-                                <a href="{{ route('editEvent', $event->id) }}" class="btn btn-warning mt-2">Edit Event</a>
+                                <a href="{{ route('events.edit', ['event' => $event->id]) }}" class="btn btn-primary">Edit</a>
+
                             @endif
 
                         </div>
@@ -43,14 +44,5 @@
                 </div>
             @endforelse
         </div>
-        <div class="row">
-           //pagination
 
-            <div
-                class="d-flex justify-content-center">
-                {{ $events->links() }}
-
-
-        </div>
-    </div>
 @endsection

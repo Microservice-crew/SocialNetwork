@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <form action="{{ route('updateEvent', $event->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('events.update', ['event' => $event->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT') {{-- Use PUT method for updating --}}
 
@@ -31,7 +31,6 @@
                     <div class="form-group">
                         <label for="image">Event Image:</label>
                         <input type="file" name="image" id="image" class="form-control">
-                        <p class="text-muted">Leave this empty if you don't want to change the image.</p>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Update Event</button>

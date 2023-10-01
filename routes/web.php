@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,7 @@ Route::get('/reclamations/{reclamation}/edit',  [App\Http\Controllers\Reclamatio
 
 Route::resource("posts", PostController::class);
 // route for event controller
-Route::resource("Event", EventController::class);
+Route::resource("events", App\Http\Controllers\EventController::class);
 
 
 
@@ -78,13 +79,16 @@ Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->middleware(
 
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
-Route::post('/Event', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
-//edit
-Route::put('/events/{event}', 'App\Http\Controllers\EventController@updateEvent')->middleware('auth')->name('updateEvent');
-//delete
-Route::delete('/events/{event}', 'App\Http\Controllers\EventController@deleteEvent')->middleware('auth')->name('deleteEvent');
+//Events
+Route::get('/Event', 'App\Http\Controllers\EventController@index')->name('events');
 
+Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
+Route::post('/Event/create', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
+//edit
+Route::get('/events/{event}/edit', 'App\Http\Controllers\EventController@edit')->name('events.edit');
+
+//put methode
+Route::delete('/events/{event}', 'App\Http\Controllers\EventController@deleteEvent')->middleware('auth')->name('deleteEvent');
 
 
 
@@ -127,7 +131,6 @@ Route::get('/notification', function () {
     return view('notification');
 });
 
-Route::get('/Event', 'App\Http\Controllers\EventController@index')->name('events');
 
 
 Route::get('/dashboardAdmin', function () {
