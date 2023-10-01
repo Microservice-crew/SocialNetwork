@@ -25,6 +25,7 @@ use App\Http\Controllers\ReclamationController;
 
 
 
+
 Route::resource('reclamations',App\Http\Controllers\ReclamationController::class);
 Route::get('/reclamations', [App\Http\Controllers\ReclamationController::class, 'index'])->name('reclamation.index');
 Route::get('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'create'])->name('reclamations.create');
