@@ -12,26 +12,35 @@
                            <div class="iq-card-header d-flex justify-content-between">
                               <div class="iq-header-title">
                                  <h4 class="card-title">Create Post</h4>
+         
+
                               </div>
-                           </div>
+                           </div> 
 
 
                            <div class="iq-card-body" data-toggle="modal" data-target="#post-modal">
                               <div class="d-flex align-items-center">
+                                  
                                  <div class="user-img">
                                     <img src="{{ asset ('images/user/1.jpg') }}" alt="userimg" class="avatar-60 rounded-circle">
                                  </div>
+      @auth
+      <h5 class="modal-title" id="post-modalLabel" style="color:blck;margin-left:2% ">    {{ Auth::user()->name }}</h5>    
 
+                             
+                       @endauth
 
+                                
 
-
-                                 <form class="post-text ml-3 w-100" action="javascript:void();">
-                                    <input type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;">
-                                 </form>
+<br>
 
 
 
                               </div>
+                              
+                              <form class="post-text ml-3 w-100" action="javascript:void();">
+                                    <input style="margin-top:3%" type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;">
+                                 </form>
                               <hr>
                                  <li class="iq-bg-primary rounded p-2 pointer mr-3"><a href=" {{ asset ('#') }}"></a><img src="{{ asset ('images/small/07.png') }}" alt="icon" class="img-fluid"> Photo/Video</li>
                          
@@ -105,28 +114,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                      @foreach ($posts as $post)
   
-           
-   
-  
-
 
 
 
@@ -168,13 +157,15 @@
                                                    <div class="d-flex align-items-top">
                                                       <div class="icon font-size-20"><i class="ri-pencil-line"></i></div>
                                                       <div class="data ml-2">
-                                                         <h6>Edit Post</h6>
-                                                         <p class="mb-0">Update your post and saved items</p>
+                                                      <a href="{{ route('update', $post->id) }}" class="btn btn-primary">Edit</a>
                                                       </div>
                                                    </div>
                                                 </a>
 
-</div>  <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
+
+                                                
+    <p>Posted by: </p>
+</div>  
  
 </div>
 </div>

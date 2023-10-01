@@ -24,7 +24,7 @@
                                     <img src="images/user/11.png" alt="profile-img" class="avatar-130 img-fluid" />
                                  </div>
                                  <div class="profile-detail">
-                                    <h3 class="">Paul Molive</h3>
+                                    <h3 class="">{{ Auth::user()->name }}</h3>
                                  </div>
                               </div>
                               <div class="profile-info p-4 d-flex align-items-center justify-content-between position-relative">

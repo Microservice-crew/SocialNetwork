@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -12,10 +13,27 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+  
+     public function index()
+     {
+         if (Auth::check()) {
+
+
+            return view('home');
+
+
+
+
+         } else {
+
+
+            
+
+            return view('login');
+         }
+     }
+     
+
 
     /**
      * Show the form for creating a new resource.
@@ -37,6 +55,8 @@ class PostController extends Controller
         $posts = Post::all();
         return view('home', compact('posts'));
     }
+    
+
     
 
     public function store(Request $request) {
@@ -97,13 +117,50 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Post $post)
+     */  
+    
+     public function update(Request $request, Post $post)
+     {
+         // 1. Validation rules for updating
+         $request->validate([
+             "content" => 'bail|required',
+             "picture" => 'bail|nullable|image|max:1024', // Allow null for updating without changing the picture
+         ]);
+     
+         // 2. Handle the new picture (if provided)
+         if ($request->hasFile('picture')) {
+             $newname = uniqid();
+             $image = $request->file('picture');
+             $newname .= "." . $image->getClientOriginalExtension();
+             $destinationPath = 'uploads';
+             $image->move($destinationPath, $newname);
+     
+        
+     
+             // Update the post with the new picture
+             $post->update([
+                 "content" => $request->content,
+                 "picture" => $newname,
+             ]);
+         } else {
+             // Update the post without changing the picture
+             $post->update([
+                 "content" => $request->content,
+             ]);
+         }
+     
+         // 3. Redirect back to the post's details page or any other page as needed
+         return redirect()->route('home', $post)->with('success', 'Post updated successfully.');
+     }
+
+         
+    public function edit(Post $post)
     {
-        //
+        // Display the edit form for the post
+        return view('update', compact('post'));
+     
     }
 
-    
 
     /**
      * Remove the specified resource from storage.
@@ -120,37 +177,9 @@ class PostController extends Controller
          // Redirect back to the list of posts or any other page as needed
          return redirect('/')->with('success', 'Post deleted successfully.');
      }
-     
-     public function edit(Post $post)
-{
-    // Display the edit form for the post
-    return view('update', compact('post'));
+
  
-}
 
-
-     public function updatez(Request $request, Post $post)
-     {
-         $request->validate([
-             'content' => 'required|string',
-             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-         ]);
-     
-         // Update the post's content
-         $post->content = $request->input('content');
-     
-         // Update the post's picture if a new one is provided
-         if ($request->hasFile('picture')) {
-             $newname = uniqid() . '.' . $request->file('picture')->getClientOriginalExtension();
-             $request->file('picture')->storeAs('public/uploads', $newname);
-             $post->picture = $newname;
-         }
-     
-         $post->save();
-     
-         // Redirect back to the list of posts or any other page as needed
-         return redirect()->route('home')->with('success', 'Post updated successfully.');
-     }
      
 
 
