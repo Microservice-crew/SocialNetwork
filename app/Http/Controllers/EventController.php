@@ -9,7 +9,7 @@ class EventController extends Controller
 {
     public function create()
     {
-        return view('createEvent');
+        return view('Events/createEvent');
     }
 
     public function storeEvent (Request $request)
@@ -37,7 +37,7 @@ class EventController extends Controller
 
     public function edit(Event $event)
     {
-        return view('events.edit', compact('event'));
+        return view('Events/editEvent', compact('event'));
     }
 
     public function update(Request $request, Event $event)
@@ -51,7 +51,7 @@ class EventController extends Controller
 
         $event->update($data);
 
-        return redirect()->route('events.index')
+        return redirect()->route('Event')
             ->with('success', 'Event updated successfully');
     }
 
@@ -59,7 +59,7 @@ class EventController extends Controller
     {
         $events = Event::all();
 
-        return view('events', compact('events'));
+        return view('Events/events', compact('events'));
     }
     //show
     public function show(Event $event)

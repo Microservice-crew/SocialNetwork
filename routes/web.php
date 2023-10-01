@@ -70,7 +70,7 @@ Route::get('/events/create', 'App\Http\Controllers\EventController@create')->mid
 Route::post('/Event', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
 Route::get('/events/{event}/edit', 'App\Http\Controllers\EventController@edit')->middleware('auth')->name('editEvent');
 //delete
-Route::delete('/events/{event}', 'App\Http\Controllers\EventController@destroy')->middleware('auth')->name('deleteEvent');
+Route::delete('/events/{event}', 'App\Http\Controllers\EventController@deleteEvent')->middleware('auth')->name('deleteEvent');
 
 
 
