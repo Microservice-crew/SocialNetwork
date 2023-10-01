@@ -24,7 +24,7 @@ use App\Http\Controllers\PostController;
 // La route-ressource => Les routes "post.*"
 Route::resource("posts", PostController::class);
 // route for event controller
-Route::resource("events", EventController::class);
+Route::resource("Event", EventController::class);
 
 
 
@@ -67,7 +67,13 @@ Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->middleware(
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
-Route::post('/events', 'App\Http\Controllers\EventController@store')->middleware('auth')->name('storeEvent');
+Route::post('/Event', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
+Route::get('/events/{event}/edit', 'App\Http\Controllers\EventController@edit')->middleware('auth')->name('editEvent');
+//delete
+Route::delete('/events/{event}', 'App\Http\Controllers\EventController@destroy')->middleware('auth')->name('deleteEvent');
+
+
+
 Route::get('/chat', function () {
     return view('chat');
 });

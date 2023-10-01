@@ -12,7 +12,7 @@ class EventController extends Controller
         return view('createEvent');
     }
 
-    public function store(Request $request)
+    public function storeEvent (Request $request)
     {
         $data = $request->validate([
             'name' => 'required|string',
@@ -21,7 +21,6 @@ class EventController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'published_by' => 'required|exists:users,id', // Validate the existence of the user
         ]);
-
         // Handle file upload
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -32,8 +31,8 @@ class EventController extends Controller
 
         Event::create($data);
 
-        return redirect()->route('events') // Corrected route name
-        ->with('success', 'Event created successfully');
+        return redirect()->route('Event')->with('success', 'Event created successfully');
+
     }
 
     public function edit(Event $event)
@@ -68,11 +67,11 @@ class EventController extends Controller
         return view('events.show', compact('event'));
     }
 
-    public function destroy(Event $event)
+    public function deleteEvent(Event $event)
     {
         $event->delete();
 
-        return redirect()->route('events.index')
+        return redirect()->route('Event')
             ->with('success', 'Event deleted successfully');
     }
 
