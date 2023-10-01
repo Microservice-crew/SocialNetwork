@@ -19,16 +19,11 @@ use App\Http\Controllers\ReclamationController;
 */
 
 
-Route::get('/reclamations', 'App\Http\Controllers\ReclamationController@index')->name('reclamations.index');
-Route::get('/reclamations/create', 'App\Http\Controllers\ReclamationController@create')->name('reclamations.create');
-Route::post('/reclamations', 'App\Http\Controllers\ReclamationController@store')->name('reclamations.store');
-Route::get('/reclamations/{id}', 'App\Http\Controllers\ReclamationController@show')->name('reclamations.show');
-Route::get('/reclamations/{id}/edit', 'App\Http\Controllers\ReclamationController@edit')->name('reclamations.edit');
-Route::put('/reclamations/{id}', 'App\Http\Controllers\ReclamationController@update')->name('reclamations.update');
-Route::delete('/reclamations/{id}', 'App\Http\Controllers\ReclamationController@destroy')->name('reclamations.destroy');
 
-
-
+Route::resource('reclamations',App\Http\Controllers\ReclamationController::class);
+Route::get('/reclamations', [App\Http\Controllers\ReclamationController::class, 'index'])->name('reclamation.index');
+Route::get('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'create'])->name('reclamations.create');
+Route::post('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'store']);
 
 
 

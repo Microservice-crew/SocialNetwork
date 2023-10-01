@@ -17,29 +17,30 @@ class ReclamationController extends Controller
     }
 
     public function create()
-    {
-        $reclamationTypes = Reclamation::getReclamationTypeOptions();
+{
+    $reclamationTypes = Reclamation::getReclamationTypeOptions();
 
-        return view('reclamation.create', compact('reclamationTypes'));
-    }
+    return view('reclamation.create', compact('reclamationTypes'));
+}
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'content' => 'required',
-            'type' => ['required', Rule::in(array_keys(Reclamation::getReclamationTypeOptions()))],
-        ]);
+{
+    $request->validate([
+        'content' => 'required',
+        'type' => ['required', Rule::in(array_keys(Reclamation::getReclamationTypeOptions()))],
+    ]);
 
-        $reclamation = new Reclamation([
-            'content' => $request->input('content'),
-            'type' => $request->input('type'),
-            'user_id' => auth()->user()->id,
-        ]);
+    $reclamation = new Reclamation([
+        'content' => $request->input('content'),
+        'type' => $request->input('type'),
+        'user_id' => auth()->user()->id,
+    ]);
 
-        $reclamation->save();
+    $reclamation->save();
 
-        return redirect()->route('reclamation.index')->with('success', 'Réclamation soumise avec succès !');
-    }
+    // Correct the route name to 'reclamations.index'
+    return redirect()->route('reclamation.index')->with('success', 'Réclamation soumise avec succès !');
+}
 
     public function edit($id)
     {

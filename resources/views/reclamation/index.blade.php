@@ -11,7 +11,7 @@
                     <p class="card-text">{{ $reclamation->content }}</p>
                     
 
-                    <form method="POST" action="{{ route('reclamations.destroy', ['id' => $reclamation->id]) }}" class="d-inline">
+                    <form method="POST" action="{{ route('reclamations.destroy', ['reclamation' => $reclamation->id]) }}" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Supprimer</button>
