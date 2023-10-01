@@ -25,7 +25,7 @@
      composer install
      ```
 
-4. **Copiez le Fichier .env.exemple** :
+4. **Copiez le Fichier .env** :
    - Copiez le fichier `.env.example` en utilisant la commande suivante :
 
      ```bash

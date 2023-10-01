@@ -102,7 +102,7 @@
                            <li>
                               <a href="{{ asset ('#authentication') }} " class="  collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pages-line"></i><span>Authentication</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                               <ul id="authentication" class="iq-submenu collapse" data-parent="#pages">
-                                 <li><a href="{{ asset ('sign-in.html') }} "><i class="ri-login-box-line"></i>Login</a></li>
+                                 <li><a href="{{ route('reclamation.index')}}"><i class="ri-login-box-line"></i>Login</a></li>
                                  <li><a href="{{ asset ('sign-up.html') }}"><i class="ri-login-circle-line"></i>Register</a></li>
                                  <li><a href="{{ asset ('pages-recoverpw.html') }}"><i class="ri-record-mail-line"></i>Recover Password</a></li>
                                  <li><a href="{{ asset ('pages-confirm-mail.html') }}"><i class="ri-file-code-line"></i>Confirm Mail</a></li>
@@ -190,9 +190,17 @@
                         <li>
                            <a href=" {{ asset ('profil') }} " class="  d-flex align-items-center">
                               <img src="{{ asset ('images/user/1.jpg') }}" class="img-fluid rounded-circle mr-3" alt="user">
+                              @auth
                               <div class="caption">
-                                 <h6 class="mb-0 line-height">zied </h6>
+                                 <h6 class="mb-0 line-height" style="font-size:16px">
+                                    
+                              
+    {{ Auth::user()->name }}
+                             
+                              
+                              </h6>
                               </div>
+                              @endauth
                            </a>
                         </li>
                         <li>
@@ -346,6 +354,12 @@
                               </div>
                            </div>
                         </li>
+
+
+
+
+
+
                         <li class="nav-item dropdown">
                            <a href=" {{ asset ('#') }}" class="search-toggle  ">
                               <div id="lottie-mail"></div>
@@ -441,8 +455,8 @@
                               <div class="iq-card shadow-none m-0">
                                  <div class="iq-card-body p-0 ">
                                     <div class="bg-primary p-3 line-height">
-                                       <h5 class="mb-0 text-white line-height">Hello zied mathlouthi</h5>
-                                       <span class="text-white font-size-12">Available</span>
+                                       <h5 class="mb-0 text-white line-height">Hello {{ Auth::user()->name }}</h5>
+                                     
                                     </div>
                                     <a href=" {{ asset ('profil') }}" class="iq-sub-card iq-bg-primary-hover">
                                        <div class="media align-items-center">

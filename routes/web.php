@@ -1,10 +1,16 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Auth;
 
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\auth\RegisteredUserController;
+
+
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReclamationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,25 +24,60 @@ use App\Http\Controllers\PostController;
 */
 
 
-//hh
 
-// La route-ressource => Les routes "post.*"
+
+Route::resource('reclamations',App\Http\Controllers\ReclamationController::class);
+Route::get('/reclamations', [App\Http\Controllers\ReclamationController::class, 'index'])->name('reclamation.index');
+Route::get('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'create'])->name('reclamations.create');
+Route::post('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'store']);
+Route::get('/reclamations/{reclamation}/edit',  [App\Http\Controllers\ReclamationController::class, 'edit'])->name('reclamations.edit');
+
+
+
+
 Route::resource("posts", PostController::class);
 
 
 
-
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('/{post}/update', 'App\Http\Controllers\PostController@editt')->name('home');
+Route::get('/', 'App\Http\Controllers\PostController@index')->middleware('auth')->name('home');
 
 
-Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->name('home');
 
 
-Route::delete('/{post}', 'App\Http\Controllers\PostController@destroy')->name('home');
+
+
+
+
+
+Route::put('/', 'App\Http\Controllers\PostController@update')->name('home');
+     
+
+
+
+
+
+Route::get('/{post}/edit', 'App\Http\Controllers\PostController@edit')->name('update');
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->middleware('auth')->name('home');
+
+//Route::get('/{post}/update', 'App\Http\Controllers\PostController@editt')->name('home');
+//Route::delete('/{post}', 'App\Http\Controllers\PostController@destroy')->name('home');
+//  Route::get('/', 'App\Http\Controllers\PostController@create')->middleware('auth');
+//Route::get('/', 'App\Http\Controllers\PostController@index')->name('home');
+
+
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+
 
 
 Route::get('/chat', function () {
@@ -53,6 +94,9 @@ Route::get('/groupe', function () {
     return view('groupe');
 });
 
+Route::get('/blog', function () {
+    return view('blog');
+});
 
 
 Route::get('/setting', function () {
@@ -76,8 +120,21 @@ Route::get('/notification', function () {
 });
 
 
-Route::get('/editprofil', function () {
-    return view('editprofil');
+
+Route::get('/dashboardAdmin', function () {
+    return view('layouts/dashboardAdmin');
+});
+
+
+
+Route::get('/table', function () {
+    return view('Admin/table');
+});
+
+
+
+Route::get('/form', function () {
+    return view('Admin/form');
 });
 
 
@@ -86,9 +143,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/editprofil', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/editprofil', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/editprofil', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
