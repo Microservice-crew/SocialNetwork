@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-
 use App\Http\Controllers\PostController;
+
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReclamationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,15 @@ use App\Http\Controllers\PostController;
 
 
 
+Route::resource('reclamations',App\Http\Controllers\ReclamationController::class);
+Route::get('/reclamations', [App\Http\Controllers\ReclamationController::class, 'index'])->name('reclamation.index');
+Route::get('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'create'])->name('reclamations.create');
+Route::post('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'store']);
+Route::get('/reclamations/{reclamation}/edit',  [App\Http\Controllers\ReclamationController::class, 'edit'])->name('reclamations.edit');
 
-// La route-ressource => Les routes "post.*"
+
+
+
 Route::resource("posts", PostController::class);
 
 
@@ -30,13 +38,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/{post}/update', 'App\Http\Controllers\PostController@editt')->name('home');
+Route::get('/{post}/update', 'App\Http\Controllers\PostController@editt');
 
 
-Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->name('home');
+Route::get('/', 'App\Http\Controllers\PostController@showziedPage');
 
 
-Route::delete('/{post}', 'App\Http\Controllers\PostController@destroy')->name('home');
+Route::delete('/{post}', 'App\Http\Controllers\PostController@destroy');
 
 
 Route::get('/chat', function () {
