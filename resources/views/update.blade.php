@@ -7,7 +7,7 @@
 @extends('layouts.base')
 
 
-@section('content')
+@section('content') 
 
 
 
@@ -39,7 +39,7 @@
 
 <div class="container">
                <div class="row">
-
+            
                   <div class="col-lg-12">
                      <div class="iq-edit-list-data">
                         <div class="tab-content">
@@ -51,8 +51,8 @@
                                     </div>
                                  </div>
                                  <div class="iq-card-body">
-
-
+                                
+                                    
 
 
 

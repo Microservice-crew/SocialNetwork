@@ -354,6 +354,12 @@
                               </div>
                            </div>
                         </li>
+
+
+
+
+
+
                         <li class="nav-item dropdown">
                            <a href=" {{ asset ('#') }}" class="search-toggle  ">
                               <div id="lottie-mail"></div>
@@ -449,8 +455,8 @@
                               <div class="iq-card shadow-none m-0">
                                  <div class="iq-card-body p-0 ">
                                     <div class="bg-primary p-3 line-height">
-                                       <h5 class="mb-0 text-white line-height">Hello zied mathlouthi</h5>
-                                       <span class="text-white font-size-12">Available</span>
+                                       <h5 class="mb-0 text-white line-height">Hello {{ Auth::user()->name }}</h5>
+                                     
                                     </div>
                                     <a href=" {{ asset ('profil') }}" class="iq-sub-card iq-bg-primary-hover">
                                        <div class="media align-items-center">

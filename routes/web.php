@@ -1,11 +1,16 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\auth\RegisteredUserController;
-use App\Http\Controllers\PostController;
+
+
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReclamationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +25,15 @@ use App\Http\Controllers\PostController;
 
 
 
+Route::resource('reclamations',App\Http\Controllers\ReclamationController::class);
+Route::get('/reclamations', [App\Http\Controllers\ReclamationController::class, 'index'])->name('reclamation.index');
+Route::get('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'create'])->name('reclamations.create');
+Route::post('/reclamations/create', [App\Http\Controllers\ReclamationController::class, 'store']);
+Route::get('/reclamations/{reclamation}/edit',  [App\Http\Controllers\ReclamationController::class, 'edit'])->name('reclamations.edit');
 
-// La route-ressource => Les routes "post.*"
+
+
+
 Route::resource("posts", PostController::class);
 // route for event controller
 Route::resource("Event", EventController::class);
@@ -74,6 +86,7 @@ Route::delete('/events/{event}', 'App\Http\Controllers\EventController@deleteEve
 
 
 
+
 Route::get('/chat', function () {
     return view('chat');
 });
@@ -114,6 +127,24 @@ Route::get('/notification', function () {
 });
 
 Route::get('/Event', 'App\Http\Controllers\EventController@index')->name('events');
+
+
+Route::get('/dashboardAdmin', function () {
+    return view('layouts/dashboardAdmin');
+});
+
+
+
+Route::get('/table', function () {
+    return view('Admin/table');
+});
+
+
+
+Route::get('/form', function () {
+    return view('Admin/form');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
