@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\auth\RegisteredUserController;
 
-
+use App\Http\Controllers\EventController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReclamationController;
@@ -80,7 +80,8 @@ Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->middleware(
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
 Route::post('/Event', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
-Route::get('/events/{event}/edit', 'App\Http\Controllers\EventController@edit')->middleware('auth')->name('editEvent');
+//edit
+Route::put('/events/{event}', 'App\Http\Controllers\EventController@updateEvent')->middleware('auth')->name('updateEvent');
 //delete
 Route::delete('/events/{event}', 'App\Http\Controllers\EventController@deleteEvent')->middleware('auth')->name('deleteEvent');
 

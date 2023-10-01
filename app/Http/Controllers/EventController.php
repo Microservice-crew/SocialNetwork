@@ -37,15 +37,16 @@ class EventController extends Controller
 
     public function edit(Event $event)
     {
-        return view('Events/editEvent', compact('event'));
+        return view('Events/editEvent');
     }
 
-    public function update(Request $request, Event $event)
+    public function updateEvent(Request $request, Event $event)
     {
         $data = $request->validate([
             'name' => 'required|string',
             'date' => 'required|date',
             'location' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'published_by' => 'required|exists:users,id',
         ]);
 
@@ -57,7 +58,8 @@ class EventController extends Controller
 
     public function index()
     {
-        $events = Event::all();
+        $events = Event::paginate(5); // Change 10 to the number of events per page you prefer.
+
 
         return view('Events/events', compact('events'));
     }
