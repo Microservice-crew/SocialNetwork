@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">   
+<html lang="en">
    <head>
       <!-- Required meta tags -->
       <meta charset="utf-8">
@@ -9,7 +9,7 @@
       <link rel="shortcut icon" href=" {{ asset ('images/favicon.ico') }} " />
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="{{ asset ('css/bootstrap.min.css') }}  ">
-      <!-- Typography CSS --> 
+      <!-- Typography CSS -->
       <link rel="stylesheet" href="{{ asset ('css/typography.css') }}  ">
       <!-- Style CSS -->
       <link rel="stylesheet" href="{{ asset ('css/style.css ') }} ">
@@ -80,17 +80,17 @@
                         <a href="{{ asset ('chat') }}" class=" "><i class="lab la-rocketchat"></i><span>Chat</span></a>
                      </li>
 
-                  
+
                      <li>
                         <a href="{{ asset ('setting') }}" class=" "><i class="las la-check-circle"></i><span>Setting</span></a>
                      </li>
-            
-    
+
+
                      <li>
-                        <a href="{{ asset ('blog') }}" class=" "><i class="lab la-blogger"></i><span>blog</span></a>
-                     </li>                     
-                                   
-               
+                        <a href="{{ asset ('Event') }}" class=" "><i class="lab la-blogger"></i><span>Event</span></a>
+                     </li>
+
+
 
 
 
@@ -102,14 +102,14 @@
                            <li>
                               <a href="{{ asset ('#authentication') }} " class="  collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pages-line"></i><span>Authentication</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                               <ul id="authentication" class="iq-submenu collapse" data-parent="#pages">
-                                 <li><a href="{{ asset ('sign-in.html') }} "><i class="ri-login-box-line"></i>Login</a></li>
+                                 <li><a href="{{ route('reclamation.index')}}"><i class="ri-login-box-line"></i>Login</a></li>
                                  <li><a href="{{ asset ('sign-up.html') }}"><i class="ri-login-circle-line"></i>Register</a></li>
                                  <li><a href="{{ asset ('pages-recoverpw.html') }}"><i class="ri-record-mail-line"></i>Recover Password</a></li>
                                  <li><a href="{{ asset ('pages-confirm-mail.html') }}"><i class="ri-file-code-line"></i>Confirm Mail</a></li>
                                  <li><a href="{{ asset ('pages-lock-screen.html') }}"><i class="ri-lock-line"></i>Lock Screen</a></li>
                               </ul>
                            </li>
-                           
+
                         </ul>
                      </li>
 
@@ -154,12 +154,12 @@
 
 
 
-        
+
 
                   <!-- TOP Nav Bar -->
                   <div class="iq-top-navbar">
-            <div class="iq-navbar-custom">  
-               <nav class="navbar navbar-expand-lg navbar-light p-0"> 
+            <div class="iq-navbar-custom">
+               <nav class="navbar navbar-expand-lg navbar-light p-0">
                   <div class="iq-navbar-logo d-flex justify-content-between">
                      <a href=" {{ asset ('index.html') }}">
                      <img src="{{ asset ('images/logo.png') }}" class="img-fluid" alt="">
@@ -480,8 +480,8 @@
                                           </div>
                                        </div>
                                     </a>
-                                    
-                                    
+
+
                                     <div class="d-inline-block w-100 text-center p-3">
                                     <form method="POST" action="{{ route('logout') }}">
             @csrf
@@ -495,7 +495,7 @@
 
 
 
-                                    
+
 
 
 
@@ -538,7 +538,7 @@
 
 
 
-         
+
 
 
 
@@ -574,8 +574,8 @@
                               <h6 class="mb-0"><a href=" {{ asset ('#') }}">Anna Mull</a></h6>
                               <p class="mb-0">Admin</p>
                            </div>
-                    
-                    
+
+
                         </div>
                         <div class="media align-items-center mb-4">
                            <div class="iq-profile-avatar status-online">
@@ -653,7 +653,7 @@
          <div id="content-page" class="content-page">
 
          @yield('content')
-   
+
          </div>
       </div>
       <!-- Wrapper END -->
