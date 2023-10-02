@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\auth\RegisteredUserController;
 
 
-use App\Http\Controllers\PostController;
 
 use App\Http\Controllers\EventController;
 
