@@ -8,10 +8,12 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $reclamation->type }}</h5>
                     <p class="card-text">{{ $reclamation->content }}</p>
+                    @if ($reclamation->picture)
+                    <img class="rounded-circle img-fluid" src="{{ asset('uploads/' . $reclamation->picture) }}" alt="Hello">
+                    @endif
                     
                     <!-- Add an "Edit" button linking to the edit route -->
                     <a href="{{ route('reclamations.edit', ['reclamation' => $reclamation->id]) }}" class="btn btn-primary">Edit</a>
-
                     <form method="POST" action="{{ route('reclamations.destroy', ['reclamation' => $reclamation->id]) }}" class="d-inline">
                         @csrf
                         @method('DELETE')
