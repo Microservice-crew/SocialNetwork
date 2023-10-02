@@ -40,6 +40,25 @@ Route::get('/reclamations/{reclamation}/edit',  [App\Http\Controllers\Reclamatio
 
 
 
+Route::resource('groups',App\Http\Controllers\GroupController::class);
+Route::get('/groups', [App\Http\Controllers\GroupController::class, 'index'])->name('Group.index');
+Route::get('/groups/create', [App\Http\Controllers\GroupController::class, 'create']);
+Route::post('/groups/create', [App\Http\Controllers\GroupController::class, 'store'])->name('groups.store');
+Route::put('/groups/{group}', [App\Http\Controllers\GroupController::class, 'update'])->name('groups.update');
+Route::get('/groups/{group}/edit', [App\Http\Controllers\GroupController::class, 'edit'])->name('groups.edit');
+Route::delete('/groups/{group}', [App\Http\Controllers\GroupController::class, 'destroy'])->name('groups.destroy');
+
+
+
+
+
+
+
+
+
+
+
+
 Route::resource("posts", PostController::class);
 // route for event controller
 Route::resource("events", App\Http\Controllers\EventController::class);
