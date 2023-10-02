@@ -19,7 +19,6 @@
                                   <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name"> </div>
                                    <div class="form-group"> <label for="description">Description</label>
                                      <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter Description"></textarea> </div>
-                                      <div class="form-group"> <label for="picture">Picture</label> <input type="text"class="form-control-file" id="picture" name="picture"> </div> 
-                                      <div class="form-group"> <label for="nbrMembers">Number of Members</label> <input type="number" class="form-control" id="nbrMembers" name="nbrMembers" placeholder="Enter Number of Members"> </div> 
+                                     <div class="form-group"> <label for="picture">Picture</label> <input type="file"class="form-control-file" id="picture" name="picture"> </div>                                             <div class="form-group"> <label for="nbrMembers">Number of Members</label> <input type="number" class="form-control" id="nbrMembers" name="nbrMembers" placeholder="Enter Number of Members"> </div> 
                                       <button type="submit" class="btn btn-primary">Create Group</button> </form> </div> </div> </div> </div> 
      @endsection 

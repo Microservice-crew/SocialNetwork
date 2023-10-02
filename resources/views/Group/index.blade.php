@@ -83,11 +83,11 @@
     <tbody>
         @foreach($groups as $group)
         <tr>
-            <td>
-                <div class="text-center">
-                    <input type="checkbox" class="form-check-input">
-                </div>
-            </td>
+        <td>
+    <div class="text-center">
+        <img src="{{asset('uploads/groups/' . $group->picture) }}" alt="Group Picture" style="max-width: 50px; max-height: 50px;">
+    </div>
+</td>
             <td>
                 <!-- Display Group Name -->
                 {{ $group->name }}
