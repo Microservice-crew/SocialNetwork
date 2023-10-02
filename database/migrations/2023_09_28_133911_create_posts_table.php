@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('content');
             $table->string('picture');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
 
+   
     /**
      * Reverse the migrations.
      *

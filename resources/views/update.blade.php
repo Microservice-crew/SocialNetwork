@@ -17,26 +17,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="container">
                <div class="row">
             
@@ -47,7 +27,7 @@
                               <div class="iq-card">
                                  <div class="iq-card-header d-flex justify-content-between">
                                     <div class="iq-header-title">
-                                       <h4 class="card-title">Edite posts </h4>
+                                       <h4 class="card-title">Edit posts </h4>
                                     </div>
                                  </div>
                                  <div class="iq-card-body">
@@ -66,7 +46,7 @@
         <textarea name="content" id="content" rows="10" cols="50">{{ $post->content }}</textarea><br>
 
         <label for="picture">Picture</label><br>
-        <input type="file" name="picture" id="picture"><br>
+        <input type="file" name="picture" id="picture"><br><br>
 
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

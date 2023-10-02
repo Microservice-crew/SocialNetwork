@@ -54,11 +54,11 @@
             
               <div class="input-box">
                 <i class="fas fa-user"></i>
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Enter your Fullname" />
               </div>
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="Enter your Email" />
   
               </div>
 
@@ -73,7 +73,7 @@
                 <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="new-password" />
+                            required autocomplete="new-password" placeholder="Enter your Password" />
 
               </div>
 
@@ -85,7 +85,7 @@
 
               <x-text-input id="password_confirmation" class="block mt-1 w-full"
                             type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                            name="password_confirmation" required autocomplete="new-password"  placeholder="Confirm your Password"/>
 
 
 

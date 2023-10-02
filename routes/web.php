@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\auth\RegisteredUserController;
 
+
+use App\Http\Controllers\PostController;
+
 use App\Http\Controllers\EventController;
+
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReclamationController;
@@ -53,10 +57,6 @@ Route::get('/', 'App\Http\Controllers\PostController@index')->middleware('auth')
 
 
 Route::put('/', 'App\Http\Controllers\PostController@update')->name('home');
-
-
-
-
 
 
 Route::get('/{post}/edit', 'App\Http\Controllers\PostController@edit')->name('update');
