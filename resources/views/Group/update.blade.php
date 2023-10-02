@@ -29,10 +29,7 @@
                         <label for="description">Description</label>
                         <textarea class="form-control" id="description" name="description" rows="4">{{ $group->description }}</textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="picture">Picture</label>
-                        <input type="text" class="form-control-file" id="picture" name="picture" value="{{ $group->picture }}">
-                    </div>
+                    <div class="form-group"> <label for="picture">Picture</label> <input type="file"class="form-control-file" id="picture" name="picture"> </div>       
                     <div class="form-group">
                         <label for="nbrMembers">Number of Members</label>
                         <input type="number" class="form-control" id="nbrMembers" name="nbrMembers" value="{{ $group->nbrMembers }}">

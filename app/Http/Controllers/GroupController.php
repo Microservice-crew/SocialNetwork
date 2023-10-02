@@ -21,30 +21,36 @@ class GroupController extends Controller
 {
     return view('Group.create');
 }
-    public function store(Request $request)
-    {
-        Log::info('Store method called.'); // Add log message
-        // Validate the incoming request data
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'picture' => 'required',
-            'nbrMembers' => 'required'
-        ]);
+public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required',
+        'description' => 'required',
+        'picture' => 'nullable|image', // Validation for the picture
+        'nbrMembers' => 'required',
+    ]);
 
-        // Create a new Group instance and save it to the database
-        $group = new Group([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'picture' => $request->input('picture'),
-            'nbrMembers' => $request->input('nbrMembers'),
-
-        ]);
-        
-         $group->save();
-
-        return redirect()->route('Group.index')->with('success', 'Group created successfully');
+    // Handle picture upload
+    if ($request->hasFile('picture')) {
+        $image = $request->file('picture');
+        $newName = uniqid() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = 'uploads/groups';
+        $image->move($destinationPath, $newName);
+    } else {
+        $newName = null;
     }
+
+    $group = new Group([
+        'name' => $request->input('name'),
+        'description' => $request->input('description'),
+        'picture' => $newName, // Assign the uploaded picture or null
+        'nbrMembers' => $request->input('nbrMembers'),
+    ]);
+
+    $group->save();
+
+    return redirect()->route('Group.index')->with('success', 'Group created successfully');
+}
 
     public function edit($id)
 {
