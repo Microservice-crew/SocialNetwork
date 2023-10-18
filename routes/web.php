@@ -48,6 +48,14 @@ Route::get('/groups/{group}/edit', [App\Http\Controllers\GroupController::class,
 Route::delete('/groups/{group}', [App\Http\Controllers\GroupController::class, 'destroy'])->name('groups.destroy');
 
 
+Route::resource('articles',App\Http\Controllers\ArticleController::class);
+Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('Article.index');
+Route::get('/articles/create', [App\Http\Controllers\ArticleController::class, 'create']);
+Route::post('/articles/create', [App\Http\Controllers\ArticleController::class, 'store'])->name('articles.store');
+Route::put('/articles/{article}', [App\Http\Controllers\ArticleController::class, 'update'])->name('articles.update');
+Route::get('/articles/{article}/edit', [App\Http\Controllers\ArticleController::class, 'edit'])->name('articles.edit');
+Route::delete('/articles/{article}', [App\Http\Controllers\ArticleController::class, 'destroy'])->name('articles.destroy');
+
 
 
 
