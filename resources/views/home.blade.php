@@ -49,12 +49,6 @@
 
 
 
-
-
-
-
-
-
                            <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="post-modalLabel" aria-hidden="true" style="display: none;">
                               <div class="modal-dialog" role="document">
                                  <div class="modal-content">
@@ -177,7 +171,9 @@
                                                       <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
             @csrf
             @method('DELETE')
+            @if(auth()->user()->id == $post->user_id)
             <button type="submit" class="btn btn-danger" style="margin-left:20px">Delete</button>
+            @endif
         </form>
 
                                                       </div>
@@ -187,10 +183,15 @@
                                                    <div class="d-flex align-items-top">
                                                       <div class="icon font-size-20"><i class="ri-pencil-line"></i></div>
                                                       <div class="data ml-2" style=" margin-top:-15%;">
+                                                      
+                                                    
+                                                      @if(auth()->user()->id == $post->user_id)
                                                       <a href="{{ route('update', $post->id) }}" class="btn btn-primary">Edit</a>
+                                                      @endif
                                                       </div>
                                                    </div>
                                                 </a>
+                                               
 
 
 
@@ -269,19 +270,61 @@
                                              <img src="{{ asset ('images/user/02.jpg') }} " alt="userimg" class="avatar-35 rounded-circle img-fluid">
                                           </div>
                                           <div class="comment-data-block ml-3">
-                                             <h6>Monty Carlo</h6>
-                                             <p class="mb-0">Lorem ipsum dolor sit amet</p>
-                                             <div class="d-flex flex-wrap align-items-center comment-activity">
-                                                <a href="{{ asset ('javascript:void();') }}">like</a>
-                                             </div>
+                                             
+                                                @if ($post->commentaires)
+        @foreach ($post->commentaires as $commentaire)
+            <div>
+               
+                
+            
+
+
+
+                                             <h6>{{ Auth::user()->name }} :</h6>
+                                             <p class="mb-0">{{ $commentaire->content }}</p>
+                                             <br>
+                                            
                                           </div>
+                                          @if(auth()->user()->id == $post->user_id)
+                                          <a href="{{ route('updateCommentaire', $commentaire->id) }}" class="btn btn-primary">Edit</a>
+                                          @endif
+
+                                           <form method="POST" action="{{ route('commentaire.destroy', ['commentaire' => $commentaire->id]) }}">
+            @csrf
+            @method('DELETE')
+@if(auth()->user()->id == $post->user_id)
+<button type="submit" class="btn btn-danger" style="margin-left: 100px; margin-top: -60px;">Delete</button>
+@endif
+          
+        </form>
+                                          
+                                         
+        @endforeach
+    @endif
                                        </div>
                                     </li>
 
                                  </ul>
-                                 <form class="comment-text d-flex align-items-center mt-3" action="javascript:void(0);">
-                                    <input type="text" class="form-control rounded">
-                                 </form>
+
+
+                                 <!-- Formulaire d'ajout de commentaire -->
+    <form action="{{ route('commentaires.store', $post) }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <input type="text" name="content" class="form-control" placeholder="Ajouter un commentaire">
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter un commentaire</button>
+    </form>
+
+    <!-- Vérification si $post a des commentaires -->
+    
+
+
+
+
+
+
+                                
                               </div>
                            </div>
                         </div>

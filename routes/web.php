@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CommentaireController;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\auth\RegisteredUserController;
-
+use App\Models\Post;
 
 
 use App\Http\Controllers\EventController;
@@ -59,7 +59,6 @@ Route::delete('/groups/{group}', [App\Http\Controllers\GroupController::class, '
 
 
 
-
 Route::resource("posts", PostController::class);
 // route for event controller
 Route::resource("events", App\Http\Controllers\EventController::class);
@@ -82,12 +81,16 @@ Route::put('/', 'App\Http\Controllers\PostController@update')->name('home');
 Route::get('/{post}/edit', 'App\Http\Controllers\PostController@edit')->name('update');
 
 
+Route::post('/posts/{post}/commentaires', [CommentaireController::class, 'store'])->name('commentaires.store');
 
 
 
 
+Route::put('/commentaires/{commentaire}', 'App\Http\Controllers\CommentaireController@update')->name('commentaires.update');
 
+Route::get('/{commentaire}/editt', 'App\Http\Controllers\CommentaireController@edit')->name('updateCommentaire');
 
+Route::delete('/commentairess/{commentaire}', 'App\Http\Controllers\CommentaireController@destroy')->name('commentaire.destroy');
 
 
 
@@ -182,7 +185,7 @@ Route::post('/reclamation/{reclamation}/reply', [App\Http\Controllers\ReponseRec
 
 
 Route::get('/table', function () {
-    return view('Admin/table');
+    return view('Group/table');
 })->middleware('admin');
 
 
