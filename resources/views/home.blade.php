@@ -264,6 +264,7 @@
                                              <img src="{{ asset ('images/user/02.jpg') }} " alt="userimg" class="avatar-35 rounded-circle img-fluid">
                                           </div>
                                           <div class="comment-data-block ml-3">
+                                             
                                                 @if ($post->commentaires)
         @foreach ($post->commentaires as $commentaire)
             <div>
@@ -275,15 +276,19 @@
 
                                              <h6>{{ Auth::user()->name }} :</h6>
                                              <p class="mb-0">{{ $commentaire->content }}</p>
+                                             <br>
                                             
                                           </div>
+                                          @if(auth()->user()->id == $post->user_id)
                                           <a href="{{ route('updateCommentaire', $commentaire->id) }}" class="btn btn-primary">Edit</a>
+                                          @endif
 
                                            <form method="POST" action="{{ route('commentaire.destroy', ['commentaire' => $commentaire->id]) }}">
             @csrf
             @method('DELETE')
-
-            <button type="submit" class="btn btn-danger" style="margin-left:100px">Delete</button>
+@if(auth()->user()->id == $post->user_id)
+<button type="submit" class="btn btn-danger" style="margin-left: 100px; margin-top: -60px;">Delete</button>
+@endif
           
         </form>
                                           
