@@ -193,11 +193,11 @@
                               @auth
                               <div class="caption">
                                  <h6 class="mb-0 line-height" style="font-size:16px">
-                                    
-                              
+
+
     {{ Auth::user()->name }}
-                             
-                              
+
+
                               </h6>
                               </div>
                               @endauth
@@ -456,7 +456,7 @@
                                  <div class="iq-card-body p-0 ">
                                     <div class="bg-primary p-3 line-height">
                                        <h5 class="mb-0 text-white line-height">Hello {{ Auth::user()->name }}</h5>
-                                     
+
                                     </div>
                                     <a href=" {{ asset ('profil') }}" class="iq-sub-card iq-bg-primary-hover">
                                        <div class="media align-items-center">
@@ -718,5 +718,7 @@
       <script src="{{ asset ('js/chart-custom.js') }}"></script>
       <!-- Custom JavaScript -->
       <script src="{{ asset ('js/custom.js') }}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
    </body>
 </html>

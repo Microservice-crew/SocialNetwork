@@ -14,6 +14,8 @@ use App\Http\Controllers\EventController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReclamationController;
+//Comment controller
+use App\Http\Controllers\CommentsEventController;
 
 
 /*
@@ -106,9 +108,19 @@ Route::post('/Event/create', 'App\Http\Controllers\EventController@storeEvent')-
 //edit
 Route::get('/events/{event}/edit',  [App\Http\Controllers\EventController::class, 'edit'])->name('events.edit');
 //put methode
-Route::put('/events/{event}', 'EventController@update')->name('events.update');
+Route::put('/events/{event}', [App\Http\Controllers\EventController::class, 'update'])->name('events.update');
 
 Route::delete('/events/{event}', 'App\Http\Controllers\EventController@deleteEvent')->middleware('auth')->name('deleteEvent');
+Route::get('/eventsDetail/{event}', 'App\Http\Controllers\EventController@eventDetail')->name('events.detail');
+Route::post('/comments/create', [App\Http\Controllers\CommentsEventController::class, 'store'])->name('comment.create');
+Route::prefix('comments')->group(function () {
+    Route::put('/comments/{comment}', [App\Http\Controllers\CommentsEventController::class, 'update'])->name('comment.update');
+    Route::delete('/comments/{comment}', [App\Http\Controllers\CommentsEventController::class, 'destroy'])->name('comment.destroy');
+
+});
+
+
+
 
 
 
