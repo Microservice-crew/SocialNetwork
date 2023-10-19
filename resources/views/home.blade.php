@@ -149,9 +149,15 @@
                                        <img class="rounded-circle img-fluid" src="{{ asset('storage/' . $post->user->photo) }}" alt="">
                                     </div>
                                     <div class="media-support-info mt-2">
+
+                                       @csrf
+            
+                                    </div>   
+
                                        <h5 class="mb-0 d-inline-block"><a href="{{ asset ('#') }}" class="">{{ $post->user->name}}</a></h5>
 
                                     </div>
+
 
 
 
