@@ -1,11 +1,17 @@
 <?php
 
+
+
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Commentaire;
+use App\Http\Controllers\PostController;
+
+use App\Models\Post;
 
 
 class CommentaireController extends Controller
@@ -38,17 +44,25 @@ class CommentaireController extends Controller
         return view('home', compact('commentaires'));
     }
 
+
+
+
     // CommentaireController.php
 
 public function store(Request $request, Post $post)
-{
-    $commentaires = new Commentaire();
-    $commentaires->content = $request->input('content'); // Change 'body' to 'content'
-    $post->commentaires()->save($commentaires);
+    {
+        $this->validate($request, [
+            'content' => 'required',
+        ]);
 
-    return redirect('/');
-}
+        $commentaire = new Commentaire([
+            'content' => $request->input('content'),
+        ]);
 
+        $post->commentaires()->save($commentaire);
+
+        return redirect()->back()->with('success', 'Commentaire ajouté avec succès.');
+    }
 
 
 
