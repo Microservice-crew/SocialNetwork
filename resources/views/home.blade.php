@@ -12,39 +12,39 @@
                            <div class="iq-card-header d-flex justify-content-between">
                               <div class="iq-header-title">
                                  <h4 class="card-title">Create Post</h4>
-         
+
 
                               </div>
-                           </div> 
+                           </div>
 
 
                            <div class="iq-card-body" data-toggle="modal" data-target="#post-modal">
                               <div class="d-flex align-items-center">
-                                  
+                                  @auth
                                  <div class="user-img">
-                                    <img src="{{ asset ('images/user/1.jpg') }}" alt="userimg" class="avatar-60 rounded-circle">
+                                    <img src="{{ asset('storage/' . Auth::user()->photo) }}" alt="userimg" class="avatar-60 rounded-circle">
                                  </div>
-      @auth
-      <h5 class="modal-title" id="post-modalLabel" style="color:blck;margin-left:2% ">    {{ Auth::user()->name }}</h5>    
-         
+
+      <h5 class="modal-title" id="post-modalLabel" style="color:blck;margin-left:2% ">    {{ Auth::user()->name }}</h5>
+
                        @endauth
 
 
-              
-                                
+
+
 
 <br>
 
 
 
                               </div>
-                              
+
                               <form class="post-text ml-3 w-100" action="javascript:void();">
                                     <input style="margin-top:3%" type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;">
                                  </form>
                               <hr>
                                  <li class="iq-bg-primary rounded p-2 pointer mr-3"><a href=" {{ asset ('#') }}"></a><img src="{{ asset ('images/small/07.png') }}" alt="icon" class="img-fluid"> Photo/Video</li>
-                         
+
                            </div>
 
 
@@ -58,11 +58,11 @@
                                     </div>
                                     <div class="modal-body">
                                        <div class="d-flex align-items-center">
-                                       
 
 
 
-                                       
+
+
 
 	<!-- Le formulaire est géré par la route "posts.store" -->
 	<form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data" >
@@ -80,9 +80,9 @@
 			@enderror
 		</p>
 
-		
+
 		<p>
-			<label for="picture" style="color:#38B4E6 ">Couverture</label><br/> 
+			<label for="picture" style="color:#38B4E6 ">Couverture</label><br/>
 			<input type="file" name="picture" id="picture" >
 
 			<!-- Le message d'erreur pour "picture" -->
@@ -96,8 +96,8 @@
 </div>
                                        <hr>
 
-                                     
-                                       
+
+
                                     </div>
                                  </div>
                               </div>
@@ -126,10 +126,10 @@
 
 
                      @foreach ($posts as $post)
-  
-           
-   
-  
+
+
+
+
 
 
 
@@ -140,15 +140,15 @@
                               <div class="user-post-data">
                                  <div class="d-flex flex-wrap">
                                     <div class="media-support-user-img mr-3">
-                                       <img class="rounded-circle img-fluid" src="{{ asset ('images/user/01.jpg') }}" alt="">
+                                       <img class="rounded-circle img-fluid" src="{{ asset('storage/' . $post->user->photo) }}" alt="">
                                     </div>
                                     <div class="media-support-info mt-2">
                                        <h5 class="mb-0 d-inline-block"><a href="{{ asset ('#') }}" class="">{{ $post->user->name}}</a></h5>
-                                      
-                                    </div>   
+
+                                    </div>
 
 
-                                    
+
                                  </div>
                               </div>
 
@@ -169,7 +169,7 @@
             <button type="submit" class="btn btn-danger" style="margin-left:20px">Delete</button>
             @endif
         </form>
-                                                        
+
                                                       </div>
                                                    </div>
                                                 </a>
@@ -188,10 +188,10 @@
                                                
 
 
-                                                
-  
-</div>  
- 
+
+
+</div>
+
 </div>
 </div>
 
@@ -202,14 +202,14 @@
                               <p style="color:black">{{ $post->content }}</p>
                                 </div>
                               <div class="user-post">
-                                 <div class="d-flex">  
-                              <img src="{{asset ('uploads')}}/{{ $post->picture }}" width="600px" alt="">    
-                                
-                           
+                                 <div class="d-flex">
+                              <img src="{{asset ('uploads')}}/{{ $post->picture }}" width="600px" alt="">
+
+
                                     </div>
                                </div>
 
-      
+
 
 
 
@@ -237,7 +237,7 @@
                                                 </span>
                                                 <div class="dropdown-menu">
                                                    <a class="dropdown-item" href="{{ asset ('#') }}">Max Emum</a>
-                                             
+
                                                 </div>
                                              </div>
                                           </div>
@@ -249,12 +249,12 @@
                                              </span>
                                              <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="{{ asset ('#') }}">Max Emum</a>
-                                                
+
                                              </div>
                                           </div>
                                        </div>
                                     </div>
-                                   
+
                                  </div>
                                  <hr>
                                  <ul class="post-comments p-0 m-0">
@@ -297,7 +297,7 @@
     @endif
                                        </div>
                                     </li>
-                                   
+
                                  </ul>
 
 
@@ -323,8 +323,8 @@
                            </div>
                         </div>
                      </div>
-                    
-                    
+
+
 
 
                      @endforeach
@@ -334,7 +334,7 @@
                   </div>
 
 
-           
+
 
 
 
@@ -433,8 +433,8 @@
                            </ul>
                         </div>
                      </div>
-                
-                     
+
+
                   </div>
                   <div class="col-sm-12 text-center">
                      <img src="{{ asset ('images/page-img/page-load-loader.gif') }}" alt="loader" style="height: 100px;">
