@@ -11,10 +11,17 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::all(); // Change 10 to the number of events per page you prefer.
+        $events = Event::all();
 
 
         return View::make('Events.events', compact('events'));
+    }
+    public function admin()
+    {
+        $events = Event::all();
+
+
+        return View::make('Admin.Event.Events', compact('events'));
     }
     public function create()
     {

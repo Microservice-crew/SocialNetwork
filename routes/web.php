@@ -120,6 +120,7 @@ Route::prefix('comments')->group(function () {
 });
 
 
+Route::get('/dashboardAdmin/Event', 'App\Http\Controllers\EventController@admin')->name('events');
 
 
 
