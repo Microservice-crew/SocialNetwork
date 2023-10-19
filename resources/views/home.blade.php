@@ -143,15 +143,9 @@
                                        <img class="rounded-circle img-fluid" src="{{ asset('storage/' . $post->user->photo) }}" alt="">
                                     </div>
                                     <div class="media-support-info mt-2">
-
-                                       @csrf
-            
-                                    </div>   
-
                                        <h5 class="mb-0 d-inline-block"><a href="{{ asset ('#') }}" class="">{{ $post->user->name}}</a></h5>
 
                                     </div>
-
 
 
 
@@ -266,13 +260,14 @@
                                  <ul class="post-comments p-0 m-0">
                                     <li class="mb-2">
                                        <div class="d-flex flex-wrap">
+                                            @if ($post->commentaires)
+        @foreach ($post->commentaires as $commentaire)
                                           <div class="user-img">
-                                             <img src="{{ asset ('images/user/02.jpg') }} " alt="userimg" class="avatar-35 rounded-circle img-fluid">
+                                             <img src="{{ asset('storage/' . $commentaire->user->photo) }} " alt="userimg" class="avatar-35 rounded-circle img-fluid">
                                           </div>
                                           <div class="comment-data-block ml-3">
                                              
-                                                @if ($post->commentaires)
-        @foreach ($post->commentaires as $commentaire)
+                                                
             <div>
                
                 
@@ -280,19 +275,19 @@
 
 
 
-                                             <h6>{{ Auth::user()->name }} :</h6>
+                                             <h6>{{ $commentaire->user->name }} :</h6>
                                              <p class="mb-0">{{ $commentaire->content }}</p>
                                              <br>
                                             
                                           </div>
-                                          @if(auth()->user()->id == $post->user_id)
+                                          @if ($commentaire->user_id == Auth::user()->id)
                                           <a href="{{ route('updateCommentaire', $commentaire->id) }}" class="btn btn-primary">Edit</a>
                                           @endif
 
                                            <form method="POST" action="{{ route('commentaire.destroy', ['commentaire' => $commentaire->id]) }}">
             @csrf
             @method('DELETE')
-@if(auth()->user()->id == $post->user_id)
+@if ($commentaire->user_id == Auth::user()->id) 
 <button type="submit" class="btn btn-danger" style="margin-left: 100px; margin-top: -60px;">Delete</button>
 @endif
           
@@ -310,6 +305,8 @@
                                  <!-- Formulaire d'ajout de commentaire -->
     <form action="{{ route('commentaires.store', $post) }}" method="POST">
         @csrf
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> <!-- Include the user_id -->
+
         <div class="form-group">
             <input type="text" name="content" class="form-control" placeholder="Ajouter un commentaire">
         </div>
