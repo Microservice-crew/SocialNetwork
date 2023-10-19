@@ -20,6 +20,14 @@
                         <button type="submit" class="btn btn-danger">Supprimer</button>
                     </form>
                 </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Replies FROM ADMIN</h5>
+                        @foreach($reclamation->replies as $reply)
+                            <p class="card-text">{{ $reply->content }}</p>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         @endforeach
     </div>
