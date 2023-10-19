@@ -66,4 +66,42 @@ public function store(Request $request, Post $post)
 
 
 
+public function destroy(Commentaire $commentaire)
+{
+    $commentaire->delete();
+     return redirect('/')->with('success', 'Commentaire deleted successfully.');
+}
+
+
+
+
+     public function update(Request $request, Commentaire $commentaire)
+     {
+         // 1. Validation rules for updating
+         $request->validate([
+             "content" => 'bail|required',
+             
+         ]);
+  
+             $commentaire->update([
+                 "content" => $request->content,
+             ]);
+        
+         // 3. Redirect back to the post's details page or any other page as needed
+         return redirect()->route('home', $commentaire)->with('success', 'Commentaire updated successfully.');
+     }
+
+         
+    public function edit(Commentaire $commentaire)
+    {
+        // Display the edit form for the post
+        return view('updateCommentaire', compact('commentaire'));
+     
+    }
+
+
+
+
+
+
 }

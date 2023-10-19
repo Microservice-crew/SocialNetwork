@@ -275,11 +275,18 @@
 
                                              <h6>{{ Auth::user()->name }} :</h6>
                                              <p class="mb-0">{{ $commentaire->content }}</p>
-                                             <div class="d-flex flex-wrap align-items-center comment-activity">
-                                                <a href="{{ asset ('javascript:void();') }}">like</a>          
-                                             </div>
+                                            
                                           </div>
+                                          <a href="{{ route('updateCommentaire', $commentaire->id) }}" class="btn btn-primary">Edit</a>
 
+                                           <form method="POST" action="{{ route('commentaire.destroy', ['commentaire' => $commentaire->id]) }}">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit" class="btn btn-danger" style="margin-left:100px">Delete</button>
+          
+        </form>
+                                          
                                          
         @endforeach
     @endif

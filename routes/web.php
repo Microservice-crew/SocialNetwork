@@ -84,6 +84,11 @@ Route::post('/posts/{post}/commentaires', [CommentaireController::class, 'store'
 
 
 
+Route::put('/commentaires/{commentaire}', 'App\Http\Controllers\CommentaireController@update')->name('commentaires.update');
+
+Route::get('/{commentaire}/editt', 'App\Http\Controllers\CommentaireController@edit')->name('updateCommentaire');
+
+Route::delete('/commentairess/{commentaire}', 'App\Http\Controllers\CommentaireController@destroy')->name('commentaire.destroy');
 
 
 
