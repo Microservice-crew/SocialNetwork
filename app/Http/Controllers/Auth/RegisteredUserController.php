@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         return view('auth.register');
-        
+
     }
 
     /**
@@ -35,12 +35,15 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+           'photo' => $request->file('photo')->store('images/user', 'public'),
+
         ]);
 
         event(new Registered($user));

@@ -57,6 +57,8 @@
                                                     <div class="card mb-3 position-relative">
                                                         <div class="card-body d-flex justify-content-between">
                                                             <div>
+                                                                <img class="rounded-circle img-fluid avatar-40 mb-2" src="{{ asset('storage/' . $comment->user->photo) }}" alt="profile" loading="lazy">
+
                                                                 <h6 class="card-subtitle mb-2 text-muted">{{ $comment->user->name }}</h6>
                                                                 <p class="card-text">{{ $comment->content }}</p>
                                                                 <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>

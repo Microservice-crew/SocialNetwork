@@ -5,6 +5,13 @@
     <div class="container my-4">
         <h2>Events</h2> <!-- Add your desired title here -->
     </div>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-lg-2">
+                <a href="{{ route('createEvent') }}" class="btn btn-success mb-3">Create Event</a>
+            </div>
+        </div>
+    </div>
     <!-- Page Content  -->
     <div id="content-page" class="content-page">
         <div class="container">

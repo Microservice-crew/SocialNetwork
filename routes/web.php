@@ -106,16 +106,16 @@ Route::get('/Event', 'App\Http\Controllers\EventController@index')->name('events
 Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
 Route::post('/Event/create', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
 //edit
-Route::get('/events/{event}/edit',  [App\Http\Controllers\EventController::class, 'edit'])->name('events.edit');
+Route::get('/events/{event}/edit',  [App\Http\Controllers\EventController::class, 'edit'])->middleware('auth')->name('events.edit');
 //put methode
-Route::put('/events/{event}', [App\Http\Controllers\EventController::class, 'update'])->name('events.update');
+Route::put('/events/{event}', [App\Http\Controllers\EventController::class, 'update'])->middleware('auth')->name('events.update');
 
 Route::delete('/events/{event}', 'App\Http\Controllers\EventController@deleteEvent')->middleware('auth')->name('deleteEvent');
 Route::get('/eventsDetail/{event}', 'App\Http\Controllers\EventController@eventDetail')->name('events.detail');
-Route::post('/comments/create', [App\Http\Controllers\CommentsEventController::class, 'store'])->name('comment.create');
+Route::post('/comments/create', [App\Http\Controllers\CommentsEventController::class, 'store'])->middleware('auth')->name('comment.create');
 Route::prefix('comments')->group(function () {
-    Route::put('/comments/{comment}', [App\Http\Controllers\CommentsEventController::class, 'update'])->name('comment.update');
-    Route::delete('/comments/{comment}', [App\Http\Controllers\CommentsEventController::class, 'destroy'])->name('comment.destroy');
+    Route::put('/comments/{comment}', [App\Http\Controllers\CommentsEventController::class, 'update'])->middleware('auth')->name('comment.update');
+    Route::delete('/comments/{comment}', [App\Http\Controllers\CommentsEventController::class, 'destroy'])->middleware('auth')->name('comment.destroy');
 
 });
 

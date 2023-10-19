@@ -189,8 +189,9 @@
                      <ul class="navbar-nav ml-auto navbar-list">
                         <li>
                            <a href=" {{ asset ('profil') }} " class="  d-flex align-items-center">
-                              <img src="{{ asset ('images/user/1.jpg') }}" class="img-fluid rounded-circle mr-3" alt="user">
-                              @auth
+                               @auth
+                              <img src="{{ asset('storage/' . Auth::user()->photo) }}" class="img-fluid rounded-circle mr-3" alt="user">
+
                               <div class="caption">
                                  <h6 class="mb-0 line-height" style="font-size:16px">
 
