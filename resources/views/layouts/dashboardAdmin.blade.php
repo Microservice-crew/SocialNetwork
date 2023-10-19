@@ -475,104 +475,42 @@
                  </li>
                  <li class="nav-item dropdown d-none d-lg-block">
                     <a href="javascript:void(0);" class="d-flex align-items-center dropdown-toggle" id="drop-down-arrow" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       <img src="{{ asset ('images/user/1.jpg') }}" class="img-fluid rounded-circle me-3" alt="user" loading="lazy">
+                        @auth
+                            <img src="{{ asset('storage/' . Auth::user()->photo) }}" class="img-fluid rounded-circle mr-3" alt="user">
                        <div class="caption">
-                          <h6 class="mb-0 line-height">Bni Cyst</h6>
+                          <h6 class="mb-0 line-height">{{ Auth::user()->name }}</h6>
                        </div>
                     </a>
+
                     <div class="sub-drop dropdown-menu caption-menu" aria-labelledby="drop-down-arrow">
                        <div class="card shadow-none m-0">
                           <div class="card-header ">
                              <div class="header-title">
-                                <h5 class="mb-0 ">Hello Bni Cyst</h5>
+                                <h5 class="mb-0 ">Hello {{ Auth::user()->name }}</h5>
                              </div>
                           </div>
                           <div class="card-body p-0 ">
-                             <div class="d-flex align-items-center iq-sub-card border-0">
-                                <span class="material-symbols-outlined">
-                                   line_style
-                                </span>
-                                <div class="ms-3">
-                                   <a href="../app/profile.html" class="mb-0 h6">
-                                   My Profile
-                                   </a>
-                                </div>
-                             </div>
-                             <div class="d-flex align-items-center iq-sub-card border-0">
-                                <span class="material-symbols-outlined">
-                                   edit_note
-                                </span>
-                                <div class="ms-3">
-                                   <a href="../app/profile-edit.html" class="mb-0 h6">
-                                   Edit Profile
-                                   </a>
-                                </div>
-                             </div>
-                             <div class="d-flex align-items-center iq-sub-card border-0">
-                                <span class="material-symbols-outlined">
-                                   manage_accounts
-                                </span>
-                                <div class="ms-3">
-                                   <a href="../app/account-setting.html" class="mb-0 h6">
-                                   Account settings
-                                   </a>
-                                </div>
-                             </div>
-                             <div class="d-flex align-items-center iq-sub-card border-0">
-                                <span class="material-symbols-outlined">
-                                   lock
-                                </span>
-                                <div class="ms-3">
-                                   <a href="../app/privacy-setting.html" class="mb-0 h6">
-                                   Privacy Settings
-                                   </a>
-                                </div>
-                             </div>
+
+
+
+
                              <div class="d-flex align-items-center iq-sub-card">
-                                <span class="material-symbols-outlined">
-                                   login
-                                </span>
+
                                 <div class="ms-3">
-                                   <a href="../dashboard/sign-in.html" class="mb-0 h6">
-                                   Sign out
-                                   </a>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+
+                                        <button type="submit" >
+                                            {{ __('Log Out') }}
+                                        </button>
+                                    </form>
                                 </div>
                              </div>
-                             <div class=" iq-sub-card">
-                                <h5>Chat Settings</h5>
-                             </div>
-                             <div class="d-flex align-items-center iq-sub-card border-0">
-                                   <i class="material-symbols-outlined text-success md-14">
-                                   circle
-                                </i>
-                                <div class="ms-3">
-                                   Online
-                                </div>
-                             </div>
-                             <div class="d-flex align-items-center iq-sub-card border-0">
-                                <i class="material-symbols-outlined text-warning md-14">
-                                   circle
-                                </i>
-                                <div class="ms-3">
-                                   Away
-                                </div>
-                             </div>
-                             <div class="d-flex align-items-center iq-sub-card border-0">
-                                <i class="material-symbols-outlined text-danger md-14">
-                                   circle
-                                </i>
-                                <div class="ms-3">
-                                   Disconnected
-                                </div>
-                             </div>
-                             <div class="d-flex align-items-center iq-sub-card border-0">
-                                   <i class="material-symbols-outlined text-gray md-14">
-                                   circle
-                                </i>
-                                <div class="ms-3">
-                                   Invisible
-                                </div>
-                             </div>
+
+                              @endauth
+
+
+
                           </div>
                        </div>
                     </div>
