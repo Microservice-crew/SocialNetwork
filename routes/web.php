@@ -179,8 +179,8 @@ Route::get('/dashboardAdmin/listReclamation', function () {
     return view('layouts/listReclamationAdmin');
 });
 
-Route::get('/dashboardAdmin/listReclamation', [App\Http\Controllers\ReponseReclamationController::class, 'index'])->name('reclamation.listReclamationAdmin');
-Route::post('/reclamation/{reclamation}/reply', [App\Http\Controllers\ReponseReclamationController::class, 'store'])->name('reclamation.reply');
+Route::get('/dashboardAdmin/listReclamation', [App\Http\Controllers\ReponseReclamationController::class, 'index'])->middleware('admin')->name('reclamation.listReclamationAdmin');
+Route::post('/reclamation/{reclamation}/reply', [App\Http\Controllers\ReponseReclamationController::class, 'store'])->middleware('admin')->name('reclamation.reply');
 
 
 
