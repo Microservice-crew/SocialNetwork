@@ -220,7 +220,7 @@
               </div>
               <ul class="navbar-nav navbar-list">
                  <li class="nav-item">
-                    <a href="{{ asset ('resources\views\layouts\dashboardAdmin.blade.php') }}" class="d-flex align-items-center">
+                    <a href="{{ asset ('/') }}" class="d-flex align-items-center">
                        <i class="material-symbols-outlined">home</i>
                     </a>
                  </li>
@@ -641,7 +641,7 @@
                   </li>
                   <li class="nav-item">
                       <a class="nav-link " aria-current="page"
-                          href="../reclamations" target="_blank">
+                          href="{{ asset ('/dashboardAdmin/listReclamation') }}">
                           <i class="icon material-symbols-outlined">
                               message
                           </i>
