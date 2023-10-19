@@ -207,9 +207,15 @@
                            </a>
                         </li>
                         <li>
-                           <a href=" {{ asset ('') }}" class="  d-flex align-items-center">
-                           <i class="ri-home-line"></i>
-                           </a>
+                         @auth
+                             @if(auth()->user()->role === 'admin')
+                                 <li>
+                                     <a href="{{ asset('dashboardAdmin') }}" class="d-flex align-items-center">
+                                         <i class="ri-home-line"></i>
+                                     </a>
+                                 </li>
+                                 @endif
+                                 @endauth
                         </li>
                         <li class="nav-item">
                            <a class="search-toggle  " href=" {{ asset ('request') }}"><i class="ri-group-line"></i></a>

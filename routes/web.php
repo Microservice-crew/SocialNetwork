@@ -121,7 +121,7 @@ Route::prefix('comments')->group(function () {
 
 Route::get('/calendar', [App\Http\Controllers\EventController::class, 'calendar'])->name('calendar.index');
 Route::get('/events',[App\Http\Controllers\EventController::class, 'getEvents'])->name('calendar.events');
-Route::get('/dashboardAdmin/Event', 'App\Http\Controllers\EventController@admin')->name('events');
+Route::get('/dashboardAdmin/Event', 'App\Http\Controllers\EventController@admin')->middleware('admin')->name('events');
 
 
 
@@ -169,19 +169,19 @@ Route::get('/notification', function () {
 
 Route::get('/dashboardAdmin', function () {
     return view('layouts/dashboardAdmin');
-});
+})->middleware('admin');
+
 
 
 
 Route::get('/table', function () {
     return view('Admin/table');
-});
-
+})->middleware('admin');
 
 
 Route::get('/form', function () {
     return view('Admin/form');
-});
+})->middleware('admin');
 
 
 Route::get('/dashboard', function () {
