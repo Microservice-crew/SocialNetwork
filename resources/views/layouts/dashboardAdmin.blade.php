@@ -641,11 +641,11 @@
                   </li>
                   <li class="nav-item">
                       <a class="nav-link " aria-current="page"
-                          href="../app/chat.html" target="_blank">
+                          href="../reclamations" target="_blank">
                           <i class="icon material-symbols-outlined">
                               message
                           </i>
-                          <span class="item-name">Chat</span>
+                          <span class="item-name">Reclamation</span>
                       </a>
                   </li>
                   <li class="nav-item">
