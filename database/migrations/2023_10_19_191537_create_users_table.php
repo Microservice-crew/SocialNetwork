@@ -11,25 +11,21 @@ return new class extends Migration
      *
      * @return void
      */
-
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('date');
-            $table->string('location');
-            //image
-            $table->string('image');
-            $table->unsignedBigInteger('published_by'); // Assuming this is a foreign key
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table ->string('photo');
+            $table->rememberToken();
             $table->timestamps();
 
-            // Define the foreign key constraint
-            $table->foreign('published_by')->references('id')->on('users');
+
         });
     }
-
-
 
     /**
      * Reverse the migrations.
@@ -38,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('users');
     }
 };

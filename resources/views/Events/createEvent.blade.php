@@ -28,6 +28,10 @@
                         <input type="text" name="location" id="location" class="form-control" required>
                     </div>
                     <div class="form-group">
+                        <label for="location">Event Description:</label>
+                        <input type="text" name="description" id="description" class="form-control" required>
+                    </div>
+                    <div class="form-group">
                         <input type="hidden" name="published_by" id="published_by" class="form-control" value="{{ Auth::user()->id }}" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Create Event</button>

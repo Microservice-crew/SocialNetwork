@@ -87,10 +87,12 @@
 
 
                      <li>
-                        <a href="{{ asset ('Event') }}" class=" "><i class="lab la-blogger"></i><span>Event</span></a>
+                        <a href="{{ asset ('Event') }}" class=" "><i class="lab la-blogger-b"></i><span>Event</span></a>
                      </li>
 
-
+                      <li>
+                          <a href="{{ asset ('calendar') }}" class=" "><i class="ri-calendar-line"></i><span>Calender</span></a>
+                      </li>
 
 
 
@@ -189,24 +191,31 @@
                      <ul class="navbar-nav ml-auto navbar-list">
                         <li>
                            <a href=" {{ asset ('profil') }} " class="  d-flex align-items-center">
-                              <img src="{{ asset ('images/user/1.jpg') }}" class="img-fluid rounded-circle mr-3" alt="user">
-                              @auth
+                               @auth
+                              <img src="{{ asset('storage/' . Auth::user()->photo) }}" class="img-fluid rounded-circle mr-3" alt="user">
+
                               <div class="caption">
                                  <h6 class="mb-0 line-height" style="font-size:16px">
-                                    
-                              
+
+
     {{ Auth::user()->name }}
-                             
-                              
+
+
                               </h6>
                               </div>
                               @endauth
                            </a>
                         </li>
                         <li>
-                           <a href=" {{ asset ('') }}" class="  d-flex align-items-center">
-                           <i class="ri-home-line"></i>
-                           </a>
+                         @auth
+                             @if(auth()->user()->role === 'admin')
+                                 <li>
+                                     <a href="{{ asset('dashboardAdmin') }}" class="d-flex align-items-center">
+                                         <i class="ri-home-line"></i>
+                                     </a>
+                                 </li>
+                                 @endif
+                                 @endauth
                         </li>
                         <li class="nav-item">
                            <a class="search-toggle  " href=" {{ asset ('request') }}"><i class="ri-group-line"></i></a>
@@ -456,7 +465,7 @@
                                  <div class="iq-card-body p-0 ">
                                     <div class="bg-primary p-3 line-height">
                                        <h5 class="mb-0 text-white line-height">Hello {{ Auth::user()->name }}</h5>
-                                     
+
                                     </div>
                                     <a href=" {{ asset ('profil') }}" class="iq-sub-card iq-bg-primary-hover">
                                        <div class="media align-items-center">
@@ -718,5 +727,17 @@
       <script src="{{ asset ('js/chart-custom.js') }}"></script>
       <!-- Custom JavaScript -->
       <script src="{{ asset ('js/custom.js') }}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              var calendarEl = document.getElementById('calendar');
+              var calendar = new FullCalendar.Calendar(calendarEl, {
+                  initialView: 'dayGridMonth',
+                  events: '/events', // Lien pour récupérer les événements depuis le serveur
+              });
+              calendar.render();
+          });
+      </script>
    </body>
 </html>
