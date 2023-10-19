@@ -41,7 +41,7 @@ public function store(Request $request)
 
     public function edit($id)
 {
-    $aricle = Article::findOrFail($id);
+    $article = Article::findOrFail($id);
     return view('Article.update', compact('article'));
 }
 
