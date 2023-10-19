@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,13 +11,14 @@ class Commentaire extends Model
     {
         return $this->belongsTo(User::class);
     } 
-
     public function post()
-    {
-        return $this->belongsTo(Post::class);
-    }
-
+{
+    return $this->belongsTo('App\Models\Post');
+}
     use HasFactory;
 
-    protected $fillable = ['content'];
+    protected $fillable = ['content',
+    'user_id',
+
+];
 }

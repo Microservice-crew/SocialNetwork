@@ -53,10 +53,12 @@ public function store(Request $request, Post $post)
     {
         $this->validate($request, [
             'content' => 'required',
+            'user_id' => 'required|exists:users,id',
         ]);
 
         $commentaire = new Commentaire([
             'content' => $request->input('content'),
+            'user_id' => $request->input('user_id')
         ]);
 
         $post->commentaires()->save($commentaire);
