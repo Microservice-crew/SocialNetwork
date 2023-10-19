@@ -71,20 +71,22 @@
                         <a href="{{ asset ('groupe') }}" class=" "><i class="las la-users"></i><span>Group</span></a>
                      </li>
 
+
+                      
                      <li>
-                        <a href="{{ asset ('notification') }}" class=" "><i class="las la-bell"></i><span>Notification</span></a>
+                        <a href="{{ asset ('/reclamations/create') }}" class=" "><i class="las la-bell"></i><span>Réclamation</span></a>
+                        
                      </li>
 
+
+
+                     <li>
+                        <a href="{{ asset ('/reclamations') }}" class=" "><i class="las la-check-circle"></i><span>List Réclamations</span></a>
+                     </li>
 
                      <li>
                         <a href="{{ asset ('chat') }}" class=" "><i class="lab la-rocketchat"></i><span>Chat</span></a>
                      </li>
-
-
-                     <li>
-                        <a href="{{ asset ('setting') }}" class=" "><i class="las la-check-circle"></i><span>Setting</span></a>
-                     </li>
-
 
                      <li>
                         <a href="{{ asset ('Event') }}" class=" "><i class="lab la-blogger-b"></i><span>Event</span></a>
