@@ -87,10 +87,12 @@
 
 
                      <li>
-                        <a href="{{ asset ('Event') }}" class=" "><i class="lab la-blogger"></i><span>Event</span></a>
+                        <a href="{{ asset ('Event') }}" class=" "><i class="lab la-blogger-b"></i><span>Event</span></a>
                      </li>
 
-
+                      <li>
+                          <a href="{{ asset ('calendar') }}" class=" "><i class="ri-calendar-line"></i><span>Calender</span></a>
+                      </li>
 
 
 
@@ -720,6 +722,16 @@
       <!-- Custom JavaScript -->
       <script src="{{ asset ('js/custom.js') }}"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+      <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              var calendarEl = document.getElementById('calendar');
+              var calendar = new FullCalendar.Calendar(calendarEl, {
+                  initialView: 'dayGridMonth',
+                  events: '/events', // Lien pour récupérer les événements depuis le serveur
+              });
+              calendar.render();
+          });
+      </script>
    </body>
 </html>

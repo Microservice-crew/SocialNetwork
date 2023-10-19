@@ -119,7 +119,8 @@ Route::prefix('comments')->group(function () {
 
 });
 
-
+Route::get('/calendar', [App\Http\Controllers\EventController::class, 'calendar'])->name('calendar.index');
+Route::get('/events',[App\Http\Controllers\EventController::class, 'getEvents'])->name('calendar.events');
 Route::get('/dashboardAdmin/Event', 'App\Http\Controllers\EventController@admin')->name('events');
 
 

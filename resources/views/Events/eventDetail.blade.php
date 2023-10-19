@@ -71,12 +71,12 @@
                                                                     <i class="ri-more-2-fill"></i>
                                                                 </a>
                                                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="commentOptions">
-                                                                    <li><a class="dropdown-item" href="javascript:void(0);" onclick="editComment({{ $comment->id }})">Edit</a></li>
+                                                                    <li><a class="dropdown-item" href="javascript:void(0);" onclick="editComment({{ $comment->id }})"><i class="ri-edit-line"></i></a></li>
                                                                     <li>
                                                                         <form action="{{ route('comment.destroy', ['comment' => $comment->id]) }}" method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
-                                                                            <button type="submit" class="dropdown-item text-danger">Delete</button>
+                                                                            <button type="submit" class="dropdown-item text-danger"><i class="ri-delete-bin-line"></i></button>
                                                                         </form>
                                                                     </li>
                                                                 </ul>

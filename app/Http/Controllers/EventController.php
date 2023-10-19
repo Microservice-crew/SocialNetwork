@@ -84,7 +84,31 @@ class EventController extends Controller
             ->with('success', 'Event updated successfully');
     }
 
+    public function getEvents()
+    {
+        $events = Event::all(); // Récupérez les événements depuis votre modèle Event
 
+        // Transformez les événements dans un format compatible avec FullCalendar
+        $formattedEvents = [];
+
+        foreach ($events as $event) {
+            $formattedEvents[] = [
+                'title' => $event->name,
+                'start' => $event->date,
+                'url' => route('events.detail', $event->id),
+            ];
+        }
+
+        return response()->json($formattedEvents);
+    }
+    public function calendar()
+    {
+        $events = Event::all(); // Suppose que vous avez un modèle Event
+
+
+        return view('Events\Calender', compact('events'));
+
+    }
 
     //show
     public function show(Event $event)

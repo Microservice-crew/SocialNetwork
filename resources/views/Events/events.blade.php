@@ -39,11 +39,11 @@
                                                         <form action="{{ route('deleteEvent', $event->id) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="dropdown-item">Delete Event</button>
+                                                            <button type="submit" class="dropdown-item"><i class="ri-delete-bin-line"></i></button>
                                                         </form>
                                                     @endif
                                                     @if(auth()->user()->id === $event->published_by)
-                                                        <a href="{{ route('events.edit', ['event' => $event->id]) }}" class="dropdown-item">Edit</a>
+                                                        <a href="{{ route('events.edit', ['event' => $event->id]) }}" class="dropdown-item"><i class="ri-edit-line"></i></a>
                                                     @endif
                                                 </ul>
                                             </div>
