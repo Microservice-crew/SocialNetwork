@@ -21,7 +21,7 @@
                               </div>
                               <div class="user-detail text-center mb-3">
                                  <div class="profile-img">
-                                    <img src="images/user/11.png" alt="profile-img" class="avatar-130 img-fluid" />
+                                    <img src="{{ asset('storage/' . Auth::user()->photo) }}" alt="profile-img" class="avatar-130 img-fluid" />
                                  </div>
                                  <div class="profile-detail">
                                     <h3 class="">{{ Auth::user()->name }}</h3>
@@ -194,7 +194,9 @@
                               <div class="d-flex align-items-center">
                                   
                                  <div class="user-img">
-                                    <img src="{{ asset ('images/user/1.jpg') }}" alt="userimg" class="avatar-60 rounded-circle">
+
+                                    <img src="{{ asset('storage/' . Auth::user()->photo) }}" alt="userimg" class="avatar-60 rounded-circle">
+
                                  </div>
       @auth
       <h5 class="modal-title" id="post-modalLabel" style="color:blck;margin-left:2% ">    {{ Auth::user()->name }}</h5>    

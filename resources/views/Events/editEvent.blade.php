@@ -29,6 +29,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="location">Event Description:</label>
+                        <input type="text" name="description" id="description" class="form-control" value="{{ $event->description }}" required>
+                    </div>
+
+
+                    <div class="form-group">
                         <label for="image">Event Image:</label>
                         <input type="file" name="image" id="image" class="form-control">
                     </div>

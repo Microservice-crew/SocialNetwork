@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\Models\ReponseReclamation;
+
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +17,11 @@ class Reclamation extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(ReponseReclamation::class); 
     }
 
     public static function getReclamationTypeOptions()
