@@ -124,6 +124,7 @@ Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 //Events
 Route::get('/Event', 'App\Http\Controllers\EventController@index')->name('events');
 
+
 Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
 Route::post('/Event/create', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
 //edit

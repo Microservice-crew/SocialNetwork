@@ -77,7 +77,7 @@
 
 			<!-- Le message d'erreur pour "content" -->
 			@error("content")
-			<div>{{ $message }}</div>
+			<div style="color:red;">{{ $message }}</div>
 			@enderror
 		</p>
 
@@ -88,7 +88,7 @@
 
 			<!-- Le message d'erreur pour "picture" -->
 			@error("picture")
-			<div>{{ $message }}</div>
+			<div style="color:red;">{{ $message }}</div>
 			@enderror
 		</p>
 		<button type="submit"value="Valider" class="btn btn-primary d-block w-100 mt-3">Post</button>
@@ -312,6 +312,9 @@
         <div class="form-group">
             <input type="text" name="content" class="form-control" placeholder="Ajouter un commentaire">
         </div>
+        @error("content")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
         <button type="submit" class="btn btn-primary">Ajouter un commentaire</button>
     </form>
 

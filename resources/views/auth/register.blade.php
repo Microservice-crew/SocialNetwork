@@ -56,10 +56,16 @@
                 <i class="fas fa-user"></i>
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Enter your Fullname" />
               </div>
+              @error("name")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="Enter your Email" />
               </div>
+               @error("email")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
 
 
 
@@ -75,7 +81,9 @@
                             required autocomplete="new-password" placeholder="Enter your Password" />
 
               </div>
-
+ @error("password")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
 
 
               <div class="input-box">
@@ -89,7 +97,9 @@
 
 
               </div>
-
+@error("password")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
 
 
                 <div class="input-box">
@@ -97,7 +107,9 @@
                     <input id="photo" type="file" name="photo" accept="image/*" required>
                 </div>
 
-
+@error("photo")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
 
 
 

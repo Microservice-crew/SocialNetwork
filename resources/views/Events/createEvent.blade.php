@@ -15,23 +15,38 @@
                         <label for="image">Event image:</label>
                         <input type="file" name="image" id="image" class="form-control" required>
                     </div>
+                    @error("image")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
                     <div class="form-group">
                         <label for="name">Event Name:</label>
                         <input type="text" name="name" id="name" class="form-control" required>
                     </div>
+                    @error("name")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
                     <div class="form-group">
                         <label for="date">Event Date:</label>
                         <input type="date" name="date" id="date" class="form-control" required>
                     </div>
+                    @error("date")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
                     <div class="form-group">
                         <label for="location">Event Location:</label>
                         <input type="text" name="location" id="location" class="form-control" required>
                     </div>
+                    @error("location")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
                     <div class="form-group">
 
                         <label for="location">Event Description:</label>
                         <input type="text" name="description" id="description" class="form-control" required>
                     </div>
+                    @error("description")
+			<div style="color:red;">{{ $message }}</div>
+			@enderror
                     <div class="form-group">
 
                         <input type="hidden" name="published_by" id="published_by" class="form-control" value="{{ Auth::user()->id }}" required>
