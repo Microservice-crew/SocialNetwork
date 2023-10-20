@@ -25,6 +25,7 @@
                                     <img src="{{ asset('storage/' . Auth::user()->photo) }}" alt="userimg" class="avatar-60 rounded-circle">
                                  </div>
 
+
       <h5 class="modal-title" id="post-modalLabel" style="color:blck;margin-left:2% ">    {{ Auth::user()->name }}</h5>
 
                        @endauth
@@ -130,10 +131,6 @@
 
 
 
-
-
-
-
                      <div class="col-sm-12">
                         <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
                            <div class="iq-card-body">
@@ -146,6 +143,7 @@
                                        <h5 class="mb-0 d-inline-block"><a href="{{ asset ('#') }}" class="">{{ $post->user->name}}</a></h5>
 
                                     </div>
+
 
 
 
@@ -177,9 +175,11 @@
                                                    <div class="d-flex align-items-top">
                                                       <div class="icon font-size-20"><i class="ri-pencil-line"></i></div>
                                                       <div class="data ml-2" style=" margin-top:-15%;">
+
                                                       
                                                     
                                                       @if(auth()->user()->id == $post->user_id)
+
                                                       <a href="{{ route('update', $post->id) }}" class="btn btn-primary">Edit</a>
                                                       @endif
                                                       </div>
@@ -190,7 +190,9 @@
 
 
 
+
 </div>
+
 
 </div>
 </div>

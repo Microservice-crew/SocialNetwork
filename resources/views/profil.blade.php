@@ -194,7 +194,9 @@
                               <div class="d-flex align-items-center">
                                   
                                  <div class="user-img">
+
                                     <img src="{{ asset('storage/' . Auth::user()->photo) }}" alt="userimg" class="avatar-60 rounded-circle">
+
                                  </div>
       @auth
       <h5 class="modal-title" id="post-modalLabel" style="color:blck;margin-left:2% ">    {{ Auth::user()->name }}</h5>    

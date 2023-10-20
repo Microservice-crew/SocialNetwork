@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\CommentsEvent;
+
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -11,11 +13,14 @@ class EventController extends Controller
 {
     public function index()
     {
+
         $events = Event::all();
+
 
 
         return View::make('Events.events', compact('events'));
     }
+
     public function admin()
     {
         $events = Event::all();
@@ -23,6 +28,7 @@ class EventController extends Controller
 
         return View::make('Admin.Event.Events', compact('events'));
     }
+
     public function create()
     {
         return view('Events/createEvent');
@@ -34,6 +40,7 @@ class EventController extends Controller
             'name' => 'required|string',
             'date' => 'required|date',
             'location' => 'required|string',
+
             'description'=>'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'published_by' => 'required|exists:users,id', // Validate the existence of the user
@@ -84,6 +91,7 @@ class EventController extends Controller
             ->with('success', 'Event updated successfully');
     }
 
+
     public function getEvents()
     {
         $events = Event::all(); // Récupérez les événements depuis votre modèle Event
@@ -110,6 +118,7 @@ class EventController extends Controller
 
     }
 
+
     //show
     public function show(Event $event)
     {
@@ -123,6 +132,7 @@ class EventController extends Controller
         return redirect()->route('events.index')
             ->with('success', 'Event deleted successfully');
     }
+
     public function eventDetail($event)
     {
         // Fetch the event details and comments here and pass them to the view
@@ -131,5 +141,6 @@ class EventController extends Controller
 
         return view('Events/eventDetail', compact('event', 'comments'));
     }
+
 
 }

@@ -79,14 +79,25 @@
                      </li>
 
 
-
+<li>
+ <a href="{{ asset ('/reclamations') }}" class=" "><i class="las la-check-circle"></i><span>List Réclamations</span></a>
+ </li>
                      <li>
-                        <a href="{{ asset ('/reclamations') }}" class=" "><i class="las la-check-circle"></i><span>List Réclamations</span></a>
+
+                        <a href="{{ asset ('chatify') }}" class=" "><i class="lab la-rocketchat"></i><span>Chat</span></a>
+
                      </li>
+                     <li>
+                         <a href="{{ asset ('avis') }}" class=" ">
+                          <i class="las la-comment"></i><span>Avis</span>
+                          </a>
+                     </li>
+
 
                      <li>
                         <a href="{{ asset ('chat') }}" class=" "><i class="lab la-rocketchat"></i><span>Chat</span></a>
                      </li>
+
 
                      <li>
                         <a href="{{ asset ('Event') }}" class=" "><i class="lab la-blogger-b"></i><span>Event</span></a>
@@ -95,6 +106,7 @@
                       <li>
                           <a href="{{ asset ('calendar') }}" class=" "><i class="ri-calendar-line"></i><span>Calender</span></a>
                       </li>
+
 
 
 

@@ -59,7 +59,6 @@
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="Enter your Email" />
-
               </div>
 
 

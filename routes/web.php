@@ -9,6 +9,12 @@ use App\Http\Controllers\auth\RegisteredUserController;
 use App\Models\Post;
 
 
+
+use App\Http\Controllers\AvisController;
+use App\Http\Controllers\ReactionController;
+
+
+
 use App\Http\Controllers\EventController;
 
 
@@ -50,6 +56,18 @@ Route::get('/groups/{group}/edit', [App\Http\Controllers\GroupController::class,
 Route::delete('/groups/{group}', [App\Http\Controllers\GroupController::class, 'destroy'])->name('groups.destroy');
 
 
+Route::get('/avis', [AvisController::class, 'index'])->name('avis.index');
+Route::get('/avis/create', [AvisController::class, 'create'])->name('avis.create');
+Route::post('/avis', [AvisController::class, 'store'])->name('avis.store');
+Route::get('/avis/{avis}', [AvisController::class, 'show'])->name('avis.show');
+Route::get('/avis/{avis}/edit', [AvisController::class, 'edit'])->name('avis.edit');
+Route::put('/avis/{avis}', [AvisController::class, 'update'])->name('avis.update');
+Route::delete('/avis/{avis}', [AvisController::class, 'destroy'])->name('avis.destroy');
+
+
+Route::post('/avis/react/{avis}', [ReactionController::class, 'react'])->name('react');
+Route::get('/reactions', [ReactionController::class, 'index'])->name('reactions.index');
+Route::delete('/reactions/{reactions}', [ReactionController::class, 'destroy'])->name('reactions.destroy');
 
 
 
@@ -109,6 +127,7 @@ Route::get('/Event', 'App\Http\Controllers\EventController@index')->name('events
 Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
 Route::post('/Event/create', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
 //edit
+
 Route::get('/events/{event}/edit',  [App\Http\Controllers\EventController::class, 'edit'])->middleware('auth')->name('events.edit');
 //put methode
 Route::put('/events/{event}', [App\Http\Controllers\EventController::class, 'update'])->middleware('auth')->name('events.update');
@@ -125,6 +144,7 @@ Route::prefix('comments')->group(function () {
 Route::get('/calendar', [App\Http\Controllers\EventController::class, 'calendar'])->name('calendar.index');
 Route::get('/events',[App\Http\Controllers\EventController::class, 'getEvents'])->name('calendar.events');
 Route::get('/dashboardAdmin/Event', 'App\Http\Controllers\EventController@admin')->middleware('admin')->name('events');
+
 
 
 
