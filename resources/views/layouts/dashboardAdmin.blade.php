@@ -565,46 +565,13 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" data-bs-toggle="collapse" href="#friend-list" role="button" aria-expanded="false"
+                      <a class="nav-link" href="{{asset('dashboardAdmin/userList')}}" role="button"
                           aria-controls="sidebar-special">
                           <i class="icon material-symbols-outlined">
                               people
                           </i>
-                          <span class="item-name">Friend</span>
-                          <i class="right-icon material-symbols-outlined">chevron_right</i>
+                          <span class="item-name">User list</span>
                       </a>
-                      <ul class="sub-nav collapse" id="friend-list" data-bs-parent="#sidebar-menu">
-                          <li class="nav-item">
-                              <a class="nav-link "
-                                  href="../dashboard/friend-list.html">
-                                  <i class="icon material-symbols-outlined filled">
-                                      fiber_manual_record
-                                  </i>
-                                  <i class="sidenav-mini-icon"> FL </i>
-                                  <span class="item-name"> Friend List</span>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link "
-                                  href="../dashboard/friend-profile.html">
-                                  <i class="icon material-symbols-outlined filled">
-                                      fiber_manual_record
-                                  </i>
-                                  <i class="sidenav-mini-icon"> FP </i>
-                                  <span class="item-name">Friend Profile</span>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link " aria-current="page"
-                                  href="../dashboard/friend-request.html">
-                                  <i class="icon material-symbols-outlined filled">
-                                      fiber_manual_record
-                                  </i>
-                                  <i class="sidenav-mini-icon"> FR </i>
-                                  <span class="item-name">Friend Request</span>
-                              </a>
-                          </li>
-                      </ul>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link " aria-current="page"
