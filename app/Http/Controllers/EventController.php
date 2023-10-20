@@ -37,10 +37,10 @@ class EventController extends Controller
     public function storeEvent (Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|string',
+            'name' => ['required', 'string', 'min:4','max:255'],
             'date' => 'required|date',
-            'location' => 'required|string',
-            'description'=>'required|string',
+            'location' => ['required', 'string', 'min:3','max:255'],
+            'description'=>['required', 'string', 'min:5','max:255'],
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'published_by' => 'required|exists:users,id', // Validate the existence of the user
         ]);
