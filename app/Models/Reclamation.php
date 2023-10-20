@@ -10,7 +10,7 @@ class Reclamation extends Model
     const TYPE_CONTENU_INAPPROPRIE = 'Contenu Inapproprié';
     const TYPE_HARCELEMENT = 'Harcèlement';
 
-    protected $fillable = ['user_id', 'content', 'type'];
+    protected $fillable = ['user_id', 'content', 'type','picture'];
 
     public function user()
     {

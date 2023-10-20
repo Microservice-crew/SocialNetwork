@@ -45,7 +45,7 @@
               <div class="input-box">
                 <i class="fas fa-envelope"></i> 
                 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus placeholder="Enter your Email" />
    
               </div>
 

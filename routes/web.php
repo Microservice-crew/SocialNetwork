@@ -1,11 +1,17 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\auth\RegisteredUserController;
 
+use App\Http\Controllers\AvisController;
+use App\Http\Controllers\ReactionController;
+
+
+use App\Http\Controllers\EventController;
 
 
 use App\Http\Controllers\ProfileController;
@@ -35,7 +41,39 @@ Route::get('/reclamations/{reclamation}/edit',  [App\Http\Controllers\Reclamatio
 
 
 
+Route::resource('groups',App\Http\Controllers\GroupController::class);
+Route::get('/groups', [App\Http\Controllers\GroupController::class, 'index'])->name('Group.index');
+Route::get('/groups/create', [App\Http\Controllers\GroupController::class, 'create']);
+Route::post('/groups/create', [App\Http\Controllers\GroupController::class, 'store'])->name('groups.store');
+Route::put('/groups/{group}', [App\Http\Controllers\GroupController::class, 'update'])->name('groups.update');
+Route::get('/groups/{group}/edit', [App\Http\Controllers\GroupController::class, 'edit'])->name('groups.edit');
+Route::delete('/groups/{group}', [App\Http\Controllers\GroupController::class, 'destroy'])->name('groups.destroy');
+
+
+Route::get('/avis', [AvisController::class, 'index'])->name('avis.index');
+Route::get('/avis/create', [AvisController::class, 'create'])->name('avis.create');
+Route::post('/avis', [AvisController::class, 'store'])->name('avis.store');
+Route::get('/avis/{avis}', [AvisController::class, 'show'])->name('avis.show');
+Route::get('/avis/{avis}/edit', [AvisController::class, 'edit'])->name('avis.edit');
+Route::put('/avis/{avis}', [AvisController::class, 'update'])->name('avis.update');
+Route::delete('/avis/{avis}', [AvisController::class, 'destroy'])->name('avis.destroy');
+
+Route::post('/avis/react/{avis}', [ReactionController::class, 'react'])->name('react');
+Route::get('/reactions', [ReactionController::class, 'index'])->name('reactions.index');
+Route::delete('/reactions/{reactions}', [ReactionController::class, 'destroy'])->name('reactions.destroy');
+
+
+
+
+
+
+
+
+
+
 Route::resource("posts", PostController::class);
+// route for event controller
+Route::resource("events", App\Http\Controllers\EventController::class);
 
 
 
@@ -50,10 +88,6 @@ Route::get('/', 'App\Http\Controllers\PostController@index')->middleware('auth')
 
 
 Route::put('/', 'App\Http\Controllers\PostController@update')->name('home');
-     
-
-
-
 
 
 Route::get('/{post}/edit', 'App\Http\Controllers\PostController@edit')->name('update');
@@ -77,6 +111,17 @@ Route::get('/', 'App\Http\Controllers\PostController@showziedPage')->middleware(
 
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+//Events
+Route::get('/Event', 'App\Http\Controllers\EventController@index')->name('events');
+
+Route::get('/events/create', 'App\Http\Controllers\EventController@create')->middleware('auth')->name('createEvent');
+Route::post('/Event/create', 'App\Http\Controllers\EventController@storeEvent')->middleware('auth')->name('storeEvent');
+//edit
+Route::get('/events/{event}/edit',  [App\Http\Controllers\EventController::class, 'edit'])->name('events.edit');
+//put methode
+Route::put('/events/{event}', 'EventController@update')->name('events.update');
+
+Route::delete('/events/{event}', 'App\Http\Controllers\EventController@deleteEvent')->middleware('auth')->name('deleteEvent');
 
 
 

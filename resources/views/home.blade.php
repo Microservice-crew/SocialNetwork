@@ -26,10 +26,11 @@
                                  </div>
       @auth
       <h5 class="modal-title" id="post-modalLabel" style="color:blck;margin-left:2% ">    {{ Auth::user()->name }}</h5>    
-
-                             
+         
                        @endauth
 
+
+              
                                 
 
 <br>
@@ -114,8 +115,28 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                      @foreach ($posts as $post)
   
+           
+   
+  
+
 
 
 
@@ -128,9 +149,15 @@
                                        <img class="rounded-circle img-fluid" src="{{ asset ('images/user/01.jpg') }}" alt="">
                                     </div>
                                     <div class="media-support-info mt-2">
-                                       <h5 class="mb-0 d-inline-block"><a href="{{ asset ('#') }}" class="">Anna Sthesia</a></h5>
+                                    <a href="{{ asset ('#') }}" class="">{{ $post->user->name ?? 'Unknown User' }}</a>
+</h5>
+
+
                                       
                                     </div>   
+
+
+                                    
                                  </div>
                               </div>
 
@@ -156,7 +183,7 @@
                                                 <a class="dropdown-item p-3" href="#">
                                                    <div class="d-flex align-items-top">
                                                       <div class="icon font-size-20"><i class="ri-pencil-line"></i></div>
-                                                      <div class="data ml-2">
+                                                      <div class="data ml-2" style=" margin-top:-15%;">
                                                       <a href="{{ route('update', $post->id) }}" class="btn btn-primary">Edit</a>
                                                       </div>
                                                    </div>
@@ -164,7 +191,7 @@
 
 
                                                 
-    <p>Posted by: </p>
+  
 </div>  
  
 </div>
