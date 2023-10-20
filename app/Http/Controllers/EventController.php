@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\CommentsEvent;
+
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -10,11 +13,22 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::all(); // Change 10 to the number of events per page you prefer.
+
+        $events = Event::all();
+
 
 
         return View::make('Events.events', compact('events'));
     }
+
+    public function admin()
+    {
+        $events = Event::all();
+
+
+        return View::make('Admin.Event.Events', compact('events'));
+    }
+
     public function create()
     {
         return view('Events/createEvent');
@@ -23,9 +37,10 @@ class EventController extends Controller
     public function storeEvent (Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|string',
+            'name' => ['required', 'string', 'min:4','max:255'],
             'date' => 'required|date',
-            'location' => 'required|string',
+            'location' => ['required', 'string', 'min:3','max:255'],
+            'description'=>['required', 'string', 'min:5','max:255'],
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'published_by' => 'required|exists:users,id', // Validate the existence of the user
         ]);
@@ -58,6 +73,7 @@ class EventController extends Controller
             'name' => 'required|string',
             'date' => 'required|date',
             'location' => 'required|string',
+            'description'=>'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         // Handle file upload
@@ -70,10 +86,36 @@ class EventController extends Controller
 
         $event->update($data);
 
-        return redirect()->route('events.index')
+        return redirect("/Event")
             ->with('success', 'Event updated successfully');
     }
 
+
+    public function getEvents()
+    {
+        $events = Event::all(); // Récupérez les événements depuis votre modèle Event
+
+        // Transformez les événements dans un format compatible avec FullCalendar
+        $formattedEvents = [];
+
+        foreach ($events as $event) {
+            $formattedEvents[] = [
+                'title' => $event->name,
+                'start' => $event->date,
+                'url' => route('events.detail', $event->id),
+            ];
+        }
+
+        return response()->json($formattedEvents);
+    }
+    public function calendar()
+    {
+        $events = Event::all(); // Suppose que vous avez un modèle Event
+
+
+        return view('Events\Calender', compact('events'));
+
+    }
 
 
     //show
@@ -86,8 +128,18 @@ class EventController extends Controller
     {
         $event->delete();
 
-        return redirect()->route('events.index')
+        return redirect("/Event")
             ->with('success', 'Event deleted successfully');
     }
+
+    public function eventDetail($event)
+    {
+        // Fetch the event details and comments here and pass them to the view
+        $event = Event::find($event);
+        $comments = CommentsEvent::where('event_id', $event->id)->get();
+
+        return view('Events/eventDetail', compact('event', 'comments'));
+    }
+
 
 }
