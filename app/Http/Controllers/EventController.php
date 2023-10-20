@@ -86,7 +86,7 @@ class EventController extends Controller
 
         $event->update($data);
 
-        return redirect()->route('events.index')
+        return redirect("/Event")
             ->with('success', 'Event updated successfully');
     }
 
@@ -128,7 +128,7 @@ class EventController extends Controller
     {
         $event->delete();
 
-        return redirect()->route('events.index')
+        return redirect("/Event")
             ->with('success', 'Event deleted successfully');
     }
 

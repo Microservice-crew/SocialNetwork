@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Validation\Rule;
+
 
 class RegisteredUserController extends Controller
 {
@@ -32,9 +34,9 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'name' => ['required', 'string', 'min:4','max:255'],
+            'email' => ['required', 'string', 'email', 'max:255','custom_email',  'unique:'.User::class],
+            'password' => ['required','min:5', 'confirmed', Rules\Password::defaults()],
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
