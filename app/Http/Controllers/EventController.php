@@ -40,7 +40,6 @@ class EventController extends Controller
             'name' => 'required|string',
             'date' => 'required|date',
             'location' => 'required|string',
-
             'description'=>'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'published_by' => 'required|exists:users,id', // Validate the existence of the user

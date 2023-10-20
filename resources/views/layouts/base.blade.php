@@ -95,11 +95,6 @@
 
 
                      <li>
-                        <a href="{{ asset ('chat') }}" class=" "><i class="lab la-rocketchat"></i><span>Chat</span></a>
-                     </li>
-
-
-                     <li>
                         <a href="{{ asset ('Event') }}" class=" "><i class="lab la-blogger-b"></i><span>Event</span></a>
                      </li>
 
