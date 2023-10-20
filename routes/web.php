@@ -145,6 +145,10 @@ Route::get('/calendar', [App\Http\Controllers\EventController::class, 'calendar'
 Route::get('/events',[App\Http\Controllers\EventController::class, 'getEvents'])->name('calendar.events');
 Route::get('/dashboardAdmin/Event', 'App\Http\Controllers\EventController@admin')->middleware('admin')->name('events');
 
+// web.php
+Route::get('/dashboardAdmin/userList', 'App\Http\Controllers\ProfileController@admin')->middleware('admin')->name('users');
+
+Route::post('/edit-user-role/{userId}', 'App\Http\Controllers\ProfileController@updateRole')->middleware('admin')->name('updateRole');
 
 
 
