@@ -13,30 +13,8 @@
                   <h4 class="card-title">Articles</h4>
                </div>
                <div class="card-header-toolbar d-flex align-items-center">
-                   <div class="dropdown">
-                                    <div class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" role="button">
-                                       <span class="material-symbols-outlined">
-                                       more_horiz
-                                       </span>
-                                    </div>
-                                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="">
-                                          <a class="dropdown-item d-flex align-items-center" href="#"><span class="material-symbols-outlined me-2 md-18">
-                                          visibility
-                                          </span>View</a>
-                                          <a class="dropdown-item d-flex align-items-center" href="#"><span class="material-symbols-outlined me-2 md-18">
-                                          delete
-                                          </span>Delete</a>
-                                          <a class="dropdown-item d-flex align-items-center" href="#"><span class="material-symbols-outlined me-2 md-18">
-                                          edit
-                                          </span>Edit</a>
-                                          <a class="dropdown-item d-flex align-items-center" href="#"><span class="material-symbols-outlined me-2 md-18">
-                                          print
-                                          </span>Print</a>
-                                          <a class="dropdown-item d-flex align-items-center" href="#"><span class="material-symbols-outlined me-2 md-18">
-                                          file_download
-                                          </span>Download</a>
-                                       </div>
-                                     </div>
+                   
+                               
                </div>
             </div>
             <div class="card-body">
@@ -52,38 +30,25 @@
                         </div>
                      </div>
                      <div class="col-sm-12 col-md-6">
-                        <div class="user-list-files d-flex justify-content-end">
-                           <a href="#" class="chat-icon-phone btn bg-soft-primary">
-                           Print
-                           </a>
-                           <a href="#" class="chat-icon-video btn bg-soft-primary">
-                           Excel
-                           </a>
-                           <a href="#" class="chat-icon-delete btn bg-soft-primary">
-                           Pdf
-                           </a>
-                        </div>
+                     <div class="user-list-files d-flex justify-content-end">
+        <a href="{{ route('articles.store') }}" class="chat-icon-delete btn bg-soft-primary">Create</a>
+    </div>
                      </div>
                   </div>
                   <table class="files-lists table table-striped mt-4">
     <thead>
         <tr>
-            <th scope="col">
-                <div class="text-center">
-                    <input type="checkbox" class="form-check-input">
-                </div>
-            </th>
+            
+            
             <th scope="col">Article Title</th>
             <th scope="col">Content</th>
             <th scope="col">Date</th>
+            <th scope="col">Group</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($articles as $article)
+    @foreach($articles as $article)
         <tr>
-        <td>
-    
-</td>
             <td>
                 <!-- Display Article Name -->
                 {{ $article->title }}
@@ -97,36 +62,31 @@
                 {{ $article->created_at->format('M d, Y') }}
             </td>
             <td>
+                <!-- Display Group Name -->
+                {{ $article->group->name ?? 'No Group' }}
+            </td>
+            <td>
                 <div class="flex align-items-center list-user-action lh-1">
-                    {{-- <form method="POST" action="{{ route('articles.destroy', ['article' => $article->id]) }}" class="d-inline">
+                    <form method="POST" action="{{ route('articles.destroy', ['article' => $article->id]) }}" class="d-inline">
                         @csrf
                         @method('DELETE')
-                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="material-symbols-outlined">delete</i></a>
-                      </form> --}}
-                      
-
-                      <form method="POST" action="{{ route('articles.destroy', ['article' => $article->id]) }}" class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="material-symbols-outlined">delete</i></button>
+                        <button type="submit" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                            <i class="material-symbols-outlined">delete</i>
+                        </button>
                     </form>
-                    
-
-
-
                     <!-- Update Button -->
-                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Update" href="{{ route('articles.edit', ['article' => $article->id]) }}" ><i class="material-symbols-outlined">edit</i></a>
+                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Update" href="{{ route('articles.edit', ['article' => $article->id]) }}">
+                        <i class="material-symbols-outlined">edit</i>
+                    </a>
                 </div>
             </td>
         </tr>
-        @endforeach
-    </tbody>
+    @endforeach
+</tbody>
 </table>
-
-            </div>
-         </div>
-      </div>
-   </div>
 </div>
+</div>
+</div>
+</div>
+@endsection
 
-      @endsection

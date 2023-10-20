@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $fillable = ['title','content'];
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+
+    protected $fillable = ['title', 'content', 'group_id'];
 }

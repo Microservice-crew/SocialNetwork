@@ -12,32 +12,7 @@
                <div class="header-title">
                   <h4 class="card-title">Groups</h4>
                </div>
-               <div class="card-header-toolbar d-flex align-items-center">
-                   <div class="dropdown">
-                                    <div class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" role="button">
-                                       <span class="material-symbols-outlined">
-                                       more_horiz
-                                       </span>
-                                    </div>
-                                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="">
-                                          <a class="dropdown-item d-flex align-items-center" href="#"><span class="material-symbols-outlined me-2 md-18">
-                                          visibility
-                                          </span>View</a>
-                                          <a class="dropdown-item d-flex align-items-center" href="#"><span class="material-symbols-outlined me-2 md-18">
-                                          delete
-                                          </span>Delete</a>
-                                          <a class="dropdown-item d-flex align-items-center" href="#"><span class="material-symbols-outlined me-2 md-18">
-                                          edit
-                                          </span>Edit</a>
-                                          <a class="dropdown-item d-flex align-items-center" href="#"><span class="material-symbols-outlined me-2 md-18">
-                                          print
-                                          </span>Print</a>
-                                          <a class="dropdown-item d-flex align-items-center" href="#"><span class="material-symbols-outlined me-2 md-18">
-                                          file_download
-                                          </span>Download</a>
-                                       </div>
-                                     </div>
-               </div>
+               
             </div>
             <div class="card-body">
                <div class="table-responsive">
@@ -52,19 +27,11 @@
                         </div>
                      </div>
                      <div class="col-sm-12 col-md-6">
-                        <div class="user-list-files d-flex justify-content-end">
-                           <a href="#" class="chat-icon-phone btn bg-soft-primary">
-                           Print
-                           </a>
-                           <a href="#" class="chat-icon-video btn bg-soft-primary">
-                           Excel
-                           </a>
-                           <a href="#" class="chat-icon-delete btn bg-soft-primary">
-                           Pdf
-                           </a>
-                        </div>
-                     </div>
-                  </div>
+    <div class="user-list-files d-flex justify-content-end">
+        <a href="{{ route('groups.store') }}" class="chat-icon-delete btn bg-soft-primary">Create</a>
+    </div>
+</div>
+
                   <table class="files-lists table table-striped mt-4">
     <thead>
         <tr>

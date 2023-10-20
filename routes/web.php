@@ -57,10 +57,12 @@ Route::get('/articles/{article}/edit', [App\Http\Controllers\ArticleController::
 Route::delete('/articles/{article}', [App\Http\Controllers\ArticleController::class, 'destroy'])->name('articles.destroy');
 
 
+//Route::get('/groupsuser', [App\Http\Controllers\GroupController::class, 'indexx'])->name('Group.frontGroup');
 
-
-
-
+Route::get('/usergroup', [App\Http\Controllers\GroupController::class, 'indexx'])->name('usergroup');
+//Route::get('/userarticle', [App\Http\Controllers\ArticleController::class, 'indexx'])->name('userarticle');
+Route::get('/uarticles/{groupId}', [App\Http\Controllers\ArticleController::class, 'showByGroup'])->name('articles.showByGroup');
+//Route::get('/uarticles/{groupId}/pdf', [App\Http\Controllers\ArticleController::class, 'generatePdf'])->name('articles.pdf');
 
 
 

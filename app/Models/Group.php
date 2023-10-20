@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model {
 
+    
+
+public function articles()
+{
+    return $this->hasMany(Article::class);
+}
+
+
     protected $fillable = ['name','description','picture','nbrMembers'];
 }
 

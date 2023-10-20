@@ -29,6 +29,15 @@
                         <label for="content">Content</label>
                         <textarea class="form-control" id="content" name="content" rows="4">{{ $article->content }}</textarea>
                     </div>
+                    <div class="form-article">
+                        <label for="group_id">Select Group</label>
+                        <select class="form-control" id="group_id" name="group_id">
+                            @foreach($groups as $group)
+                                <option value="{{ $group->id }}">{{ $group->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <br>
                     
                     <button type="submit" class="btn btn-primary">Update Article</button>
                 </form>
