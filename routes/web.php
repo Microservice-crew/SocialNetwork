@@ -206,6 +206,8 @@ Route::get('/dashboardAdmin/listReclamation', function () {
 
 Route::get('/dashboardAdmin/listReclamation', [App\Http\Controllers\ReponseReclamationController::class, 'index'])->middleware('admin')->name('reclamation.listReclamationAdmin');
 Route::post('/reclamation/{reclamation}/reply', [App\Http\Controllers\ReponseReclamationController::class, 'store'])->middleware('admin')->name('reclamation.reply');
+Route::get('/dashboardAdmin/pie', [App\Http\Controllers\ChartController::class, 'pieChart'])->middleware('admin');
+Route::delete('/replies/{reply}', [App\Http\Controllers\ReponseReclamationController::class, 'destroy'])->name('deleteReply');
 
 
 
