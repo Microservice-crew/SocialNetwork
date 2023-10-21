@@ -617,11 +617,11 @@
                   </li>
                   <li class="nav-item">
                       <a class="nav-link " aria-current="page"
-                          href="../app/todo.html">
+                      href="{{ asset ('/dashboardAdmin/pie') }}">
                           <i class="icon material-symbols-outlined">
                               task_alt
                           </i>
-                          <span class="item-name">Todo</span>
+                          <span class="item-name">Statics</span>
                       </a>
                   </li>
                   <li class="nav-item">

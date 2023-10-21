@@ -1,5 +1,8 @@
 @extends('layouts.dashboardAdmin')
 
+
+@section('content')
+
 <html>
   <head>
     <style>
@@ -40,3 +43,5 @@
     </div>
   </body>
 </html>
+
+@endsection
