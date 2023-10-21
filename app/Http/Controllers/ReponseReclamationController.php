@@ -36,4 +36,12 @@ class ReponseReclamationController extends Controller
         return redirect()->back()->with('success', 'Reply added successfully.');
     }
 
+    public function destroy($id)
+    {
+        $reply = ReponseReclamation::find($id);
+        $reply->delete();
+
+        return redirect()->route('reclamation.listReclamationAdmin')->with('success', 'Reponse reclamation supprimée avec succès !');
+    }
+
 }
