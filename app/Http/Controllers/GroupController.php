@@ -17,6 +17,12 @@ class GroupController extends Controller
         return View::make('Group.index', compact('groups'));
     }
 
+    public function indexx()
+{
+    $groups = Group::all();
+    return view('Group.frontGroup', compact('groups'));
+}
+
     public function create()
 {
     return view('Group.create');

@@ -68,8 +68,9 @@
 
 
                      <li>
-                        <a href="{{ asset ('groupe') }}" class=" "><i class="las la-users"></i><span>Group</span></a>
-                     </li>
+    <a href="{{ asset('usergroup') }}" class=""><i class="las la-users"></i><span>Group</span></a>
+</li>
+
 
 
                       

@@ -13,16 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('content');
-            $table->string('picture');
-            $table->string('user_id');
-            $table->timestamps();
-        });
+        //
     }
 
-   
     /**
      * Reverse the migrations.
      *
@@ -30,6 +23,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        //
     }
 };

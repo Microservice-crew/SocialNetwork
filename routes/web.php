@@ -56,6 +56,16 @@ Route::get('/groups/{group}/edit', [App\Http\Controllers\GroupController::class,
 Route::delete('/groups/{group}', [App\Http\Controllers\GroupController::class, 'destroy'])->name('groups.destroy');
 
 
+Route::resource('articles',App\Http\Controllers\ArticleController::class);
+Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('Article.index');
+Route::get('/articles/create', [App\Http\Controllers\ArticleController::class, 'create']);
+Route::post('/articles/create', [App\Http\Controllers\ArticleController::class, 'store'])->name('articles.store');
+Route::put('/articles/{article}', [App\Http\Controllers\ArticleController::class, 'update'])->name('articles.update');
+Route::get('/articles/{article}/edit', [App\Http\Controllers\ArticleController::class, 'edit'])->name('articles.edit');
+Route::delete('/articles/{article}', [App\Http\Controllers\ArticleController::class, 'destroy'])->name('articles.destroy');
+
+
+//Route::get('/groupsuser', [App\Http\Controllers\GroupController::class, 'indexx'])->name('Group.frontGroup');
 Route::get('/avis', [AvisController::class, 'index'])->name('avis.index');
 Route::get('/avis/create', [AvisController::class, 'create'])->name('avis.create');
 Route::post('/avis', [AvisController::class, 'store'])->name('avis.store');
@@ -70,8 +80,10 @@ Route::get('/reactions', [ReactionController::class, 'index'])->name('reactions.
 Route::delete('/reactions/{reactions}', [ReactionController::class, 'destroy'])->name('reactions.destroy');
 
 
-
-
+Route::get('/usergroup', [App\Http\Controllers\GroupController::class, 'indexx'])->name('usergroup');
+//Route::get('/userarticle', [App\Http\Controllers\ArticleController::class, 'indexx'])->name('userarticle');
+Route::get('/uarticles/{groupId}', [App\Http\Controllers\ArticleController::class, 'showByGroup'])->name('articles.showByGroup');
+//Route::get('/uarticles/{groupId}/pdf', [App\Http\Controllers\ArticleController::class, 'generatePdf'])->name('articles.pdf');
 
 
 
