@@ -108,22 +108,7 @@
 
 
 
-                     <li>
-                        <a href="{{ asset ('#pages') }} " class="  collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-pages-line"></i><span>Pages</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li>
-                              <a href="{{ asset ('#authentication') }} " class="  collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-pages-line"></i><span>Authentication</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                              <ul id="authentication" class="iq-submenu collapse" data-parent="#pages">
-                                 <li><a href="{{ route('reclamation.index')}}"><i class="ri-login-box-line"></i>Login</a></li>
-                                 <li><a href="{{ asset ('sign-up.html') }}"><i class="ri-login-circle-line"></i>Register</a></li>
-                                 <li><a href="{{ asset ('pages-recoverpw.html') }}"><i class="ri-record-mail-line"></i>Recover Password</a></li>
-                                 <li><a href="{{ asset ('pages-confirm-mail.html') }}"><i class="ri-file-code-line"></i>Confirm Mail</a></li>
-                                 <li><a href="{{ asset ('pages-lock-screen.html') }}"><i class="ri-lock-line"></i>Lock Screen</a></li>
-                              </ul>
-                           </li>
-
-                        </ul>
-                     </li>
+                    
 
                   </ul>
                </nav>
