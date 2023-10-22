@@ -10,6 +10,8 @@
                 <div class="iq-card-body">
                     <h5>{{ $article->title }}</h5>
                     <p>{{ $article->content }}</p>
+                    <a href="{{ route('articles.pdf', ['id' => $article->id]) }}" class="btn btn-primary" target="_blank">Print PDF</a>
+
                 </div>
                 
             </div>

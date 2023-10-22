@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Group;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
+use TCPDF;
 
 
 class ArticleController extends Controller
@@ -88,6 +89,15 @@ public function update(Request $request, $id)
         $article->delete();
 
         return redirect()->route('Article.index')->with('success', 'Article deleted successfully!');
+    }
+
+    public function generatePdf($id)
+    {
+        $article = Article::find($id);
+        $pdf = new TCPDF();
+        $pdf->AddPage();
+        $pdf->writeHTML('<h1>' . $article->title . '</h1><p>' . $article->content . '</p>');
+        $pdf->Output('article.pdf', 'I');
     }
 
     
