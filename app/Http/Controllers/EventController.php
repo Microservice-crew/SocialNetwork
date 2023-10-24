@@ -41,7 +41,7 @@ class EventController extends Controller
             'name' => ['required', 'string', 'min:4','max:255'],
             'date' => ['required', 'date', new DateSupérieure], // Utilisez votre règle personnalisée ici
             'location' => ['required', 'string', 'min:3','max:255'],
-            'description'=>['required', 'string', 'min:5','max:255'],
+            'description'=>['required', 'string', 'min:5'],
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'published_by' => 'required|exists:users,id', // Validate the existence of the user
         ], [
